@@ -31,5 +31,5 @@ go mod init github.com/niqdev/gopher-labs
 go mod tidy
 
 # run
-go run labs.go --help
+go run labs.go
 ```

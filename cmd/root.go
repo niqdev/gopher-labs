@@ -17,7 +17,7 @@ var rootCmd = &cobra.Command{
   |____(____  /___  /____  >
             \/    \/     \/`,
 	Run: func(cmd *cobra.Command, args []string) {
-		log.Println("ROOT")
+		cmd.HelpFunc()(cmd, args)
 	},
 }
 
