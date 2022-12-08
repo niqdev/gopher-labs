@@ -7,7 +7,6 @@ import (
 	"io"
 	"log"
 	"net"
-	"strconv"
 
 	"golang.org/x/crypto/ssh"
 )
@@ -18,19 +17,15 @@ import (
 // https://github.com/ContainerSSH/MiniContainerSSH/blob/master/main.go
 // https://github.com/gogs/gogs/blob/main/internal/ssh/ssh.go
 func RunServer() {
-	const (
-		host = "0.0.0.0"
-		port = 2222
-	)
-	address := net.JoinHostPort(host, strconv.Itoa(port))
+	address := MyAddress()
 	sshConfig := sshServerConfig()
 	listen(address, sshConfig)
 }
 
 func sshServerConfig() *ssh.ServerConfig {
-	config := &ssh.ServerConfig{
+	sshConfig := &ssh.ServerConfig{
 		PasswordCallback: func(c ssh.ConnMetadata, pass []byte) (*ssh.Permissions, error) {
-			if c.User() == "foo" && string(pass) == "bar" {
+			if c.User() == myuser && string(pass) == mypassword {
 				// TODO return metadata to the client
 				return &ssh.Permissions{Extensions: map[string]string{"user-id": c.User()}}, nil
 			}
@@ -50,14 +45,14 @@ func sshServerConfig() *ssh.ServerConfig {
 	}
 	log.Printf("new private host key generated")
 
-	config.AddHostKey(hostKey)
-	return config
+	sshConfig.AddHostKey(hostKey)
+	return sshConfig
 }
 
 func listen(address string, sshConfig *ssh.ServerConfig) {
 	listener, err := net.Listen("tcp", address)
 	if err != nil {
-		log.Fatalf("failed to start SSH server: %v", err)
+		log.Fatalf("failed to start ssh server: %v", err)
 	}
 	log.Printf("listening on %s", address)
 
@@ -83,7 +78,6 @@ func listen(address string, sshConfig *ssh.ServerConfig) {
 			}
 
 			log.Printf("[%s] new ssh connection (%s)", sshConnection.RemoteAddr(), sshConnection.ClientVersion())
-
 			sshConnection.Close()
 		}()
 	}

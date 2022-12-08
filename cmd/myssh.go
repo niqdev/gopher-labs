@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"log"
 	"os"
 
 	"github.com/niqdev/gopher-labs/internal/myssh"
@@ -30,7 +29,8 @@ func NewMysshCmd() *cobra.Command {
 	clientCmd := &cobra.Command{
 		Use: "client",
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Println(myssh.RunClient())
+			// TODO flag address/port
+			myssh.RunClient()
 		},
 	}
 
