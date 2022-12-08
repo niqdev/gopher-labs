@@ -23,7 +23,7 @@ func NewMysshCmd() *cobra.Command {
 	serverCmd := &cobra.Command{
 		Use: "server",
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Println(myssh.RunServer())
+			myssh.RunServer()
 		},
 	}
 

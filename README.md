@@ -4,15 +4,28 @@
 * [Go by Example](https://gobyexample.com)
 * [Standard library](https://pkg.go.dev/std)
 
+TODO
+* aws
+* docker
+* kube
+
 ## labs
-
-### aws
-
-> TODO
 
 ### myssh
 
 > TODO
+
+```bash
+# start server
+go run labs.go myssh server
+
+# test
+nc 127.0.0.1 2222
+
+# connect with openssh
+ssh-keygen -f "/home/ubuntu/.ssh/known_hosts" -R "[localhost]:2222"
+ssh -o StrictHostKeyChecking=no foo@localhost -p 2222
+```
 
 ## Development
 
