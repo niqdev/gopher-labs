@@ -11,6 +11,12 @@ TODO
 
 ## labs
 
+### mydocker
+
+```bash
+go run labs.go mydocker --name example1
+```
+
 ### myssh
 
 > TODO
