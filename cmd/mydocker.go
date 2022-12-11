@@ -14,15 +14,23 @@ func NewMydockerCmd() *cobra.Command {
 		Use:   "mydocker",
 		Short: "Docker examples",
 		Run: func(cmd *cobra.Command, args []string) {
-			log.Printf("NAME %s", name)
-			mydocker.Example1()
+			invokeCmd(name)
 		},
 	}
 	command.Flags().StringVarP(&name, "name", "n", "", "name of the example")
-	// name := command.Flags().StringP("name", "n", "", "name of the example")
 	return command
 }
 
 func init() {
 	rootCmd.AddCommand(NewMydockerCmd())
+}
+
+func invokeCmd(cmd string) {
+	switch cmd {
+	case "e1":
+		mydocker.Example1()
+
+	default:
+		log.Fatalf("invalid command: [%v]", cmd)
+	}
 }
