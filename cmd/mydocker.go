@@ -27,8 +27,10 @@ func init() {
 
 func invokeCmd(cmd string) {
 	switch cmd {
-	case "e1":
-		mydocker.Example1()
+	case "run":
+		mydocker.Run()
+	case "list":
+		mydocker.List()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

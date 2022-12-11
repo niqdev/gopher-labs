@@ -14,7 +14,7 @@ import (
 // https://docs.docker.com/engine/api/sdk
 // https://docs.docker.com/engine/api/sdk/examples
 // https://github.com/fsouza/go-dockerclient
-func Example1() {
+func Run() {
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
 	if err != nil {
@@ -26,11 +26,13 @@ func Example1() {
 	if err != nil {
 		panic(err)
 	}
+	defer reader.Close()
 	io.Copy(os.Stdout, reader)
 
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: "alpine",
 		Cmd:   []string{"echo", "hello world"},
+		Tty:   false,
 	}, nil, nil, nil, "")
 	if err != nil {
 		panic(err)
