@@ -5,6 +5,7 @@ import (
 )
 
 // CONTEXT https://btree.dev/golang-context
+// LOG https://blog.logrocket.com/5-structured-logging-packages-for-go
 
 func main() {
 	cmd.Execute()

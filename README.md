@@ -6,7 +6,6 @@
 
 TODO
 * aws
-* docker
 * kube
 
 ## labs
@@ -18,8 +17,6 @@ go run labs.go mydocker --name [run|list]
 ```
 
 ### myssh
-
-> TODO
 
 ```bash
 # start server
