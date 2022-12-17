@@ -1,0 +1,35 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+           go-version-file: 'go.mod'
+
+      - name: Install dependencies
+        run: |
+          go version
+          go get -u golang.org/x/lint/golint
+          
+      - name: Run build
+        run: go build . 
+        
+      - name: Run vet & lint
+        run: |
+          go vet .
+          golint .
+      
+      - name: Run testing
+        run: go test -v
