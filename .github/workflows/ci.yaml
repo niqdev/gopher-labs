@@ -5,9 +5,9 @@ on:
     branches:
       - main
 
+# TODO vet, fmt, golint, test
 jobs:
   build:
-    name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,12 +24,4 @@ jobs:
           go get -u golang.org/x/lint/golint
           
       - name: Run build
-        run: go build . 
-        
-      - name: Run vet & lint
-        run: |
-          go vet .
-          golint .
-      
-      - name: Run testing
-        run: go test -v
+        run: go build .
