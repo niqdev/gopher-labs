@@ -9,6 +9,13 @@
 TODO
 * aws
 * kube
+* log
+* config
+* client/server http json api
+* expose pkg
+* add docs
+* vet/fmt/lint action
+* tests
 
 ## labs
 
