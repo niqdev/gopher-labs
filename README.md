@@ -1,5 +1,7 @@
 # gopher-labs
 
+[![ci](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml/badge.svg)](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml)
+
 * [go](https://go.dev/doc) documentation
 * [Go by Example](https://gobyexample.com)
 * [Standard library](https://pkg.go.dev/std)
