@@ -12,10 +12,15 @@ import (
 )
 
 // https://scalingo.com/blog/writing-a-replacement-to-openssh-using-go-12
+
 // https://blog.gopheracademy.com/advent-2015/ssh-server-in-go
 // https://gist.github.com/protosam/53cf7970e17e06135f1622fa9955415f
-// https://github.com/ContainerSSH/MiniContainerSSH/blob/master/main.go
+// OLD https://gist.github.com/jpillora/b480fde82bff51a06238
+// https://github.com/jpillora/sshd-lite
 // https://github.com/gogs/gogs/blob/main/internal/ssh/ssh.go
+
+// https://github.com/ContainerSSH/MiniContainerSSH/blob/master/main.go
+// https://github.com/ContainerSSH/libcontainerssh/blob/main/internal/sshserver/serverImpl.go
 func RunServer() {
 	address := MyAddress()
 	sshConfig := sshServerConfig()
