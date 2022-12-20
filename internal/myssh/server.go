@@ -12,6 +12,7 @@ import (
 )
 
 // https://scalingo.com/blog/writing-a-replacement-to-openssh-using-go-12
+// https://github.com/Scalingo/go-ssh-examples
 
 // https://blog.gopheracademy.com/advent-2015/ssh-server-in-go
 // https://gist.github.com/protosam/53cf7970e17e06135f1622fa9955415f
