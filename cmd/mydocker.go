@@ -31,6 +31,8 @@ func invokeCmd(cmd string) {
 		mydocker.Run()
 	case "list":
 		mydocker.List()
+	case "attach":
+		mydocker.Attach()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

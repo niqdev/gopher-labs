@@ -22,7 +22,7 @@ TODO
 ### mydocker
 
 ```bash
-go run labs.go mydocker --name [run|list]
+go run labs.go mydocker --name [run|list|attach]
 ```
 
 ### myssh
