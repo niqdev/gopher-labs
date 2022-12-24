@@ -2,14 +2,12 @@ package mydocker
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/client"
 )
 
-// https://github.com/nanobox-io/golang-docker-client
 func List() {
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
@@ -25,7 +23,7 @@ func List() {
 
 	log.Println("IMAGES:")
 	for _, image := range images {
-		fmt.Println(image.ID)
+		log.Println(image.ID)
 	}
 
 	containers, err := cli.ContainerList(ctx, types.ContainerListOptions{})
@@ -35,6 +33,6 @@ func List() {
 
 	log.Println("CONTAINERS:")
 	for _, container := range containers {
-		fmt.Println(container.ID)
+		log.Println(container.ID)
 	}
 }
