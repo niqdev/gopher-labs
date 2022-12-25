@@ -5,16 +5,16 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/niqdev/gopher-labs/internal/mydocker"
+	"github.com/niqdev/gopher-labs/internal/mykube"
 )
 
-func NewMyDockerCmd() *cobra.Command {
+func NewMyKubeCmd() *cobra.Command {
 	var name string
 	command := &cobra.Command{
-		Use:   "mydocker",
-		Short: "Docker examples",
+		Use:   "mykube",
+		Short: "Kubernetes examples",
 		Run: func(cmd *cobra.Command, args []string) {
-			invokeMyDockerCmd(name)
+			invokeMyKubeCmd(name)
 		},
 	}
 	command.Flags().StringVarP(&name, "name", "n", "", "name of the example")
@@ -22,17 +22,13 @@ func NewMyDockerCmd() *cobra.Command {
 }
 
 func init() {
-	rootCmd.AddCommand(NewMyDockerCmd())
+	rootCmd.AddCommand(NewMyKubeCmd())
 }
 
-func invokeMyDockerCmd(cmd string) {
+func invokeMyKubeCmd(cmd string) {
 	switch cmd {
-	case "run":
-		mydocker.Run()
-	case "list":
-		mydocker.List()
-	case "attach":
-		mydocker.Attach()
+	case "create":
+		mykube.CreatePod()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

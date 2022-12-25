@@ -8,7 +8,6 @@
 
 TODO
 * aws
-* kube
 * log
 * config
 * client/server http json api
@@ -23,6 +22,12 @@ TODO
 
 ```bash
 go run labs.go mydocker --name [run|list|attach]
+```
+
+### mykube
+
+```bash
+go run labs.go mykube --name [create]
 ```
 
 ### myssh

@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-func NewMysshCmd() *cobra.Command {
+func NewMySshCmd() *cobra.Command {
 	command := &cobra.Command{
 		Use:   "myssh",
 		Short: "Simple SSH server and client",
@@ -40,5 +40,5 @@ func NewMysshCmd() *cobra.Command {
 }
 
 func init() {
-	rootCmd.AddCommand(NewMysshCmd())
+	rootCmd.AddCommand(NewMySshCmd())
 }
