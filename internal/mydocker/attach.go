@@ -18,14 +18,6 @@ import (
 	"github.com/docker/go-connections/nat"
 )
 
-// https://github.com/docker/cli/blob/master/cli/command/container/exec.go
-// https://github.com/docker/cli/blob/master/cli/command/container/hijack.go
-
-// https://stackoverflow.com/questions/58732588/accept-user-input-os-stdin-to-container-using-golang-docker-sdk-interactive-co
-// https://github.com/moby/moby/blob/master/integration/internal/container/exec.go
-
-// https://github.com/nanobox-io/golang-docker-client
-// https://github.com/42wim/nomadctld
 func Attach() {
 	imageName := "edgelevel/alpine-xfce-vnc:web-0.6.0"
 	containerName := fmt.Sprintf("mydocker-%s", uniuri.NewLen(5))

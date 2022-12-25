@@ -13,7 +13,6 @@ import (
 
 // https://docs.docker.com/engine/api/sdk
 // https://docs.docker.com/engine/api/sdk/examples
-// https://github.com/fsouza/go-dockerclient
 func Run() {
 	ctx := context.Background()
 	cli, err := client.NewClientWithOpts(client.FromEnv, client.WithAPIVersionNegotiation())
