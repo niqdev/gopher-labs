@@ -4,9 +4,11 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"log"
 	"os"
 	"os/signal"
+	"sync"
 	"syscall"
 
 	"github.com/dchest/uniuri"
@@ -16,9 +18,14 @@ import (
 	"github.com/docker/go-connections/nat"
 )
 
+// https://github.com/docker/cli/blob/master/cli/command/container/exec.go
+// https://github.com/docker/cli/blob/master/cli/command/container/hijack.go
+
+// https://stackoverflow.com/questions/58732588/accept-user-input-os-stdin-to-container-using-golang-docker-sdk-interactive-co
 // https://github.com/moby/moby/blob/master/integration/internal/container/exec.go
 
-// https://github.com/42wim/nomadctld/blob/master/docker.go
+// https://github.com/nanobox-io/golang-docker-client
+// https://github.com/42wim/nomadctld
 func Attach() {
 	imageName := "edgelevel/alpine-xfce-vnc:web-0.6.0"
 	containerName := fmt.Sprintf("mydocker-%s", uniuri.NewLen(5))
@@ -35,8 +42,11 @@ func Attach() {
 	if err != nil {
 		log.Fatalf("error image pull: %v", err)
 	}
-	//defer reader.Close()
-	io.Copy(os.Stdout, reader)
+	defer reader.Close()
+
+	// io.Copy(os.Stdout, reader)
+	// suppress output
+	io.Copy(ioutil.Discard, reader)
 
 	containerConfig := &container.Config{
 		Image:        imageName,
@@ -98,12 +108,6 @@ func Attach() {
 	}
 	defer execAttachResponse.Close()
 
-	log.Printf("after attach")
-
-	// if err := Exec(execAttachResponse, execAttachResponse.Reader, os.Stdout, os.Stderr); err != nil {
-	// 	log.Fatalf("error exec: %v", err)
-	// }
-
 	closeChannel := func() {
 		log.Printf("removing docker container: id=%s", containerId)
 
@@ -112,17 +116,19 @@ func Attach() {
 		}
 	}
 
-	//var once sync.Once
+	var once sync.Once
 	go func() {
-		// if TTY=true returns: "Unrecognized input header: 13"
+		// use with TTY=false only, with TTY=true returns: "Unrecognized input header: 13"
 		//_, err := stdcopy.StdCopy(os.Stdout, os.Stderr, execAttachResponse.Reader)
+
 		// TTY
 		_, err := io.Copy(os.Stdout, execAttachResponse.Reader)
 		if err != nil {
 			log.Fatalf("error copy docker->local: %v", err)
 		}
+
 		log.Printf("close docker->local")
-		//once.Do(closeChannel)
+		once.Do(closeChannel)
 	}()
 
 	go func() {
@@ -130,11 +136,26 @@ func Attach() {
 		if err != nil {
 			log.Fatalf("error copy local->docker: %v", err)
 		}
+
 		log.Printf("close local->docker")
-		//once.Do(closeChannel)
+		once.Do(closeChannel)
 	}()
 
-	SetupCloseHandler(closeChannel)
+	// TODO CTRL+C should NOT exit
+	signalCh := make(chan os.Signal)
+	signal.Notify(signalCh, os.Interrupt, syscall.SIGTERM)
+	// signal.Notify(c, os.Interrupt)
+	go func() {
+		// for sig := range c {
+		// 	// sig is a ^C, handle it
+		// 	log.Printf("CTRL+C handler %v", sig)
+		// }
+		<-signalCh
+
+		log.Printf("CTRL+C handler")
+		once.Do(closeChannel)
+		//os.Exit(0)
+	}()
 
 	statusCh, errCh := docker.ContainerWait(ctx, containerId, container.WaitConditionNotRunning)
 	select {
@@ -142,19 +163,8 @@ func Attach() {
 		if err != nil {
 			log.Fatalf("error container wait: %v", err)
 		}
+		log.Printf("close container wait errCh")
 	case status := <-statusCh:
-		log.Printf("container wait: %v | %s", status.StatusCode, status.Error)
+		log.Printf("close container wait statusCh: %v", status.StatusCode)
 	}
-
-}
-
-func SetupCloseHandler(cleanupFunc func()) {
-	c := make(chan os.Signal)
-	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
-	go func() {
-		<-c
-		log.Printf("CTRL+C handler")
-		cleanupFunc()
-		os.Exit(0)
-	}()
 }
