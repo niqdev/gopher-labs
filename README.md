@@ -27,6 +27,10 @@ go run labs.go mydocker --name [run|list|attach]
 ### mykube
 
 ```bash
+# local cluster
+minikube start --driver=docker --embed-certs
+minikube delete --all
+
 go run labs.go mykube --name [create]
 ```
 
@@ -65,4 +69,7 @@ go mod tidy
 
 # run
 go run labs.go
+
+# build
+just
 ```
