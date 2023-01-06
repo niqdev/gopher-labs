@@ -14,6 +14,7 @@ import (
 // https://gist.github.com/calam1/c2673b6b0a53918df033d71bbf958b56
 // ROTATION https://github.com/bigwhite/experiments/blob/master/uber-zap-advanced-usage/demo4/pkg/log/log.go
 // https://gist.github.com/reitzig/2d53098861b6c1b7fcdfb065b4a81f2d
+// https://github.com/heartwilltell/log
 
 func ExampleFromDoc() {
 	// Using zap's preset constructors is the simplest way to get a feel for the
