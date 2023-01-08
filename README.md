@@ -29,7 +29,15 @@ go run labs.go mykube --name [create]
 ### mylog
 
 ```bash
+# zap logging examples
 go run labs.go mylog
+```
+
+### myschema
+
+```bash
+# JSON and Yaml schema validation
+go run labs.go myschema
 ```
 
 ### myssh
@@ -52,6 +60,7 @@ go run labs.go myssh client
 ### version
 
 ```bash
+# git version
 go run -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" labs.go version
 ```
 

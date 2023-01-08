@@ -1,0 +1,6 @@
+id: 7
+name: John Doe
+age: 13
+hobbies:
+  indoor:
+    - Chess

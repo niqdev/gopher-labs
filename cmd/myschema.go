@@ -6,7 +6,8 @@ import (
 )
 
 var mySchemaCmd = &cobra.Command{
-	Use: "myschema",
+	Use:   "myschema",
+	Short: "JSON and Yaml schema validation",
 	Run: func(cmd *cobra.Command, args []string) {
 		myschema.JsonSchemaValidation()
 	},
