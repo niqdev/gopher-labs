@@ -61,7 +61,9 @@ go run labs.go myssh client
 
 ```bash
 # git version
-go run -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" labs.go version
+go run \
+  -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" \
+  labs.go version
 ```
 
 ## Development
