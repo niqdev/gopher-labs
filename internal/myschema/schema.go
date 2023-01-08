@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-//go:embed example.json
+//go:embed employee.schema.json
 var employeeSchema string
 
 // EMBED FILES https://pkg.go.dev/embed

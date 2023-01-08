@@ -11,7 +11,7 @@
 ### mydocker
 
 ```bash
-go run labs.go mydocker --name [run|list|attach]
+go run labs.go mydocker --name [list|run|attach]
 ```
 
 <!--
@@ -25,6 +25,12 @@ minikube delete --all
 go run labs.go mykube --name [create]
 ```
 --->
+
+### mylog
+
+```bash
+go run labs.go mylog
+```
 
 ### myssh
 
@@ -41,6 +47,12 @@ ssh -o StrictHostKeyChecking=no foo@localhost -p 2222
 
 # connect with client
 go run labs.go myssh client
+```
+
+### version
+
+```bash
+go run -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" labs.go version
 ```
 
 ## Development
@@ -67,6 +79,7 @@ go run labs.go
 
 # build
 just
+./build/labs
 ```
 
 TODO

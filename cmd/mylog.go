@@ -6,9 +6,11 @@ import (
 )
 
 var myLogCmd = &cobra.Command{
-	Use: "mylog",
+	Use:   "mylog",
+	Short: "zap logging examples",
 	Run: func(cmd *cobra.Command, args []string) {
 		mylog.ExampleFromDoc()
+		mylog.ExampleWithColor()
 	},
 }
 
