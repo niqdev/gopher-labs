@@ -95,8 +95,9 @@ TODO
 * kube
 * aws
 * config
-* client/server http json api
+* http client/server json api
 * expose pkg
 * add docs
 * vet/fmt/lint action
 * tests
+* spinner
