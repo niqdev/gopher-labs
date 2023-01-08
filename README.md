@@ -14,6 +14,7 @@
 go run labs.go mydocker --name [run|list|attach]
 ```
 
+<!--
 ### mykube
 
 ```bash
@@ -23,6 +24,7 @@ minikube delete --all
 
 go run labs.go mykube --name [create]
 ```
+--->
 
 ### myssh
 
@@ -34,7 +36,7 @@ go run labs.go myssh server
 nc 127.0.0.1 2222
 
 # connect with openssh
-ssh-keygen -f "/home/ubuntu/.ssh/known_hosts" -R "[localhost]:2222"
+ssh-keygen -f ~/.ssh/known_hosts -R "[localhost]:2222"
 ssh -o StrictHostKeyChecking=no foo@localhost -p 2222
 
 # connect with client
@@ -43,14 +45,17 @@ go run labs.go myssh client
 
 ## Development
 
-Setup
+Install
 ```bash
 # ubuntu
 sudo snap install --classic go
 
 # macos
 brew install go
+```
 
+Setup
+```bash
 # init project (first time)
 go mod init github.com/niqdev/gopher-labs
 
@@ -73,4 +78,3 @@ TODO
 * add docs
 * vet/fmt/lint action
 * tests
-* json/yaml schema validation
