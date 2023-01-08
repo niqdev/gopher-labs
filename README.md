@@ -6,16 +6,6 @@
 * [Go by Example](https://gobyexample.com)
 * [Standard library](https://pkg.go.dev/std)
 
-TODO
-* aws
-* log
-* config
-* client/server http json api
-* expose pkg
-* add docs
-* vet/fmt/lint action
-* tests
-
 ## labs
 
 ### mydocker
@@ -73,3 +63,14 @@ go run labs.go
 # build
 just
 ```
+
+TODO
+* kube
+* aws
+* config
+* client/server http json api
+* expose pkg
+* add docs
+* vet/fmt/lint action
+* tests
+* json/yaml schema validation
