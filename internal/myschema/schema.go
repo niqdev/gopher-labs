@@ -32,7 +32,7 @@ func JsonSchemaValidation() {
 
 	fmt.Println(employeeSchema)
 	parseJsonExample("employee.json")
-	parseYamlExample("employee.yaml")
+	parseYamlToJsonExample("employee.yaml")
 
 	fmt.Println("LIB: xeipuuv/gojsonschema")
 	goJsonSchemaExample("employee.json")
@@ -45,6 +45,7 @@ func JsonSchemaValidation() {
 	jsonSchemaExampleYaml("employee-invalid.yaml")
 }
 
+// COLOR https://github.com/k0kubun/pp
 // https://github.com/TylerBrock/colorjson
 func parseJsonExample(fileName string) {
 	fmt.Println(fmt.Sprintf("JSON: %s", fileName))
@@ -60,21 +61,15 @@ func parseJsonExample(fileName string) {
 	}
 	log.Println(employeeJson.Name)
 
-	var prettyIndent bytes.Buffer
-	if err := json.Indent(&prettyIndent, data, "", "  "); err != nil {
+	var pretty bytes.Buffer
+	if err := json.Indent(&pretty, data, "", "  "); err != nil {
 		log.Fatalf("error pretty: %v", err)
 	}
-	log.Println(prettyIndent.String())
-
-	prettyMarshalIndent, err := json.MarshalIndent(employeeJson, "", "  ")
-	if err != nil {
-		log.Fatalf("error pretty: %v", err)
-	}
-	log.Println(string(prettyMarshalIndent))
+	log.Println(pretty.String())
 }
 
 // JSONToYAML and YAMLToJSON https://github.com/ghodss/yaml
-func parseYamlExample(fileName string) {
+func parseYamlToJsonExample(fileName string) {
 	fmt.Println(fmt.Sprintf("JSON: %s", fileName))
 
 	data, err := ioutil.ReadFile(fmt.Sprintf("data/%s", fileName))
@@ -88,6 +83,12 @@ func parseYamlExample(fileName string) {
 	}
 
 	log.Println(employeeYaml.Name)
+
+	pretty, err := json.MarshalIndent(employeeYaml, "", "  ")
+	if err != nil {
+		log.Fatalf("error pretty: %v", err)
+	}
+	log.Println(string(pretty))
 }
 
 // https://github.com/xeipuuv/gojsonschema
