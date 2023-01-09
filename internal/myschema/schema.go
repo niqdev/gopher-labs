@@ -1,6 +1,7 @@
 package myschema
 
 import (
+	"bytes"
 	_ "embed"
 	"encoding/json"
 	"fmt"
@@ -30,6 +31,8 @@ func JsonSchemaValidation() {
 	log.SetFlags(0)
 
 	fmt.Println(employeeSchema)
+	parseJsonExample("employee.json")
+	parseYamlExample("employee.yaml")
 
 	fmt.Println("LIB: xeipuuv/gojsonschema")
 	goJsonSchemaExample("employee.json")
@@ -40,6 +43,51 @@ func JsonSchemaValidation() {
 	jsonSchemaExampleJson("employee-invalid.json")
 	jsonSchemaExampleYaml("employee.yaml")
 	jsonSchemaExampleYaml("employee-invalid.yaml")
+}
+
+// https://github.com/TylerBrock/colorjson
+func parseJsonExample(fileName string) {
+	fmt.Println(fmt.Sprintf("JSON: %s", fileName))
+
+	data, err := ioutil.ReadFile(fmt.Sprintf("data/%s", fileName))
+	if err != nil {
+		log.Fatalf("error read file: %v", err)
+	}
+
+	var employeeJson EmployeeJson
+	if err := json.Unmarshal(data, &employeeJson); err != nil {
+		log.Fatalf("error unmarshal: %v", err)
+	}
+	log.Println(employeeJson.Name)
+
+	var prettyIndent bytes.Buffer
+	if err := json.Indent(&prettyIndent, data, "", "  "); err != nil {
+		log.Fatalf("error pretty: %v", err)
+	}
+	log.Println(prettyIndent.String())
+
+	prettyMarshalIndent, err := json.MarshalIndent(employeeJson, "", "  ")
+	if err != nil {
+		log.Fatalf("error pretty: %v", err)
+	}
+	log.Println(string(prettyMarshalIndent))
+}
+
+// JSONToYAML and YAMLToJSON https://github.com/ghodss/yaml
+func parseYamlExample(fileName string) {
+	fmt.Println(fmt.Sprintf("JSON: %s", fileName))
+
+	data, err := ioutil.ReadFile(fmt.Sprintf("data/%s", fileName))
+	if err != nil {
+		log.Fatalf("error read file: %v", err)
+	}
+
+	var employeeYaml EmployeeYaml
+	if err := yaml.Unmarshal([]byte(data), &employeeYaml); err != nil {
+		log.Fatalf("error unmarshal: %v", err)
+	}
+
+	log.Println(employeeYaml.Name)
 }
 
 // https://github.com/xeipuuv/gojsonschema
@@ -79,7 +127,6 @@ func jsonSchemaExampleJson(fileName string) {
 		log.Fatal(err)
 	}
 
-	// TODO EmployeeJson
 	var v interface{}
 	if err := json.Unmarshal(data, &v); err != nil {
 		log.Fatal(err)
@@ -111,11 +158,11 @@ func jsonSchemaExampleYaml(fileName string) {
 	if err != nil {
 		log.Fatalf("%#v", err)
 	}
-	// TODO EmployeeYaml
 	var model interface{}
 	if err := yaml.Unmarshal([]byte(data), &model); err != nil {
 		log.Fatalf("%#v", err)
 	}
+	log.Println(model)
 
 	// detailed error
 	if ve, ok := schema.Validate(model).(*jsonschema.ValidationError); ok {
