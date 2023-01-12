@@ -40,6 +40,12 @@ go run labs.go mylog
 go run labs.go myschema
 ```
 
+### myspinner
+
+```bash
+go run labs.go myspinner
+```
+
 ### myssh
 
 ```bash

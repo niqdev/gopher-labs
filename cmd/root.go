@@ -33,3 +33,5 @@ func Execute() {
 		os.Exit(1)
 	}
 }
+
+// ENUM https://stackoverflow.com/questions/50824554/permitted-flag-values-for-cobra
