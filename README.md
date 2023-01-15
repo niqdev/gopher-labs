@@ -108,4 +108,3 @@ TODO
 * add docs
 * vet/fmt/lint action
 * tests
-* spinner
