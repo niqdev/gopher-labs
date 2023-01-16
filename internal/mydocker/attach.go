@@ -7,15 +7,14 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"os/signal"
 	"sync"
-	"syscall"
 
 	"github.com/dchest/uniuri"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/nat"
+	"golang.org/x/crypto/ssh/terminal"
 )
 
 func Attach() {
@@ -36,8 +35,8 @@ func Attach() {
 	}
 	defer reader.Close()
 
-	// io.Copy(os.Stdout, reader)
 	// suppress output
+	// io.Copy(os.Stdout, reader)
 	io.Copy(ioutil.Discard, reader)
 
 	containerConfig := &container.Config{
@@ -74,7 +73,7 @@ func Attach() {
 
 	containerId := newContainer.ID
 
-	log.Printf("new container: image=%s, name=%s, id=%s", imageName, containerName, containerId)
+	log.Printf("new container: image=%s | name=%s | id=%s", imageName, containerName, containerId)
 
 	if err := docker.ContainerStart(ctx, containerId, types.ContainerStartOptions{}); err != nil {
 		log.Fatalf("error container start: %v", err)
@@ -89,22 +88,22 @@ func Attach() {
 		Cmd:          []string{"/bin/bash"},
 	})
 	if err != nil {
-		log.Fatalf("error docker exec create: %v", err)
+		log.Fatalf("error container exec create: %v", err)
 	}
 
 	execAttachResponse, err := docker.ContainerExecAttach(ctx, execCreateResponse.ID, types.ExecStartCheck{
 		Tty: true,
 	})
 	if err != nil {
-		log.Fatalf("error docker exec attach: %v", err)
+		log.Fatalf("error container exec attach: %v", err)
 	}
 	defer execAttachResponse.Close()
 
 	closeChannel := func() {
-		log.Printf("removing docker container: id=%s", containerId)
+		// (*) log.Printf("removing container container: id=%s", containerId)
 
 		if err := docker.ContainerRemove(ctx, containerId, types.ContainerRemoveOptions{Force: true}); err != nil {
-			log.Fatalf("error docker remove: %v", err)
+			log.Fatalf("error container remove: %v", err)
 		}
 	}
 
@@ -119,7 +118,7 @@ func Attach() {
 			log.Fatalf("error copy docker->local: %v", err)
 		}
 
-		log.Printf("close docker->local")
+		// (*) log.Println("close docker->local")
 		once.Do(closeChannel)
 	}()
 
@@ -129,25 +128,21 @@ func Attach() {
 			log.Fatalf("error copy local->docker: %v", err)
 		}
 
-		log.Printf("close local->docker")
+		// (*) log.Println("close local->docker")
 		once.Do(closeChannel)
 	}()
 
-	// TODO CTRL+C should NOT exit
-	signalCh := make(chan os.Signal)
-	signal.Notify(signalCh, os.Interrupt, syscall.SIGTERM)
-	// signal.Notify(c, os.Interrupt)
-	go func() {
-		// for sig := range c {
-		// 	// sig is a ^C, handle it
-		// 	log.Printf("CTRL+C handler %v", sig)
-		// }
-		<-signalCh
-
-		log.Printf("CTRL+C handler")
-		once.Do(closeChannel)
-		//os.Exit(0)
-	}()
+	// https://stackoverflow.com/questions/58732588/accept-user-input-os-stdin-to-container-using-golang-docker-sdk-interactive-co
+	// (*) remove commented logging to avoid messing with terminal output
+	fd := int(os.Stdin.Fd())
+	var oldState *terminal.State
+	if terminal.IsTerminal(fd) {
+		oldState, err = terminal.MakeRaw(fd)
+		if err != nil {
+			log.Fatalf("error raw terminal: %v", err)
+		}
+		defer terminal.Restore(fd, oldState)
+	}
 
 	statusCh, errCh := docker.ContainerWait(ctx, containerId, container.WaitConditionNotRunning)
 	select {
@@ -155,8 +150,8 @@ func Attach() {
 		if err != nil {
 			log.Fatalf("error container wait: %v", err)
 		}
-		log.Printf("close container wait errCh")
-	case status := <-statusCh:
-		log.Printf("close container wait statusCh: %v", status.StatusCode)
+		// (*) log.Println("close container wait errCh")
+	case _ = <-statusCh:
+		// (*) log.Printf("close container wait statusCh: %v", status.StatusCode)
 	}
 }
