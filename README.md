@@ -2,10 +2,6 @@
 
 [![ci](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml/badge.svg)](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml)
 
-* [go](https://go.dev/doc) documentation
-* [Go by Example](https://gobyexample.com)
-* [Standard library](https://pkg.go.dev/std)
-
 ## labs
 
 ### mydocker
@@ -69,6 +65,12 @@ go run \
   -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" \
   labs.go version
 ```
+
+## Resources
+
+* [go](https://go.dev/doc) documentation
+* [Go by Example](https://gobyexample.com)
+* [Standard library](https://pkg.go.dev/std)
 
 ## Development
 
