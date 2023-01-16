@@ -21,7 +21,7 @@ go run labs.go mydocker --name [list|run|attach]
 minikube start --driver=docker --embed-certs
 minikube delete --all
 
-go run labs.go mykube --name [list]
+go run labs.go mykube --name [list|exec]
 ```
 
 ### mylog

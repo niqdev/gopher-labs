@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	metaV1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 )
@@ -24,7 +24,7 @@ func ListPods() {
 		log.Fatalf("error clientset: %v", err)
 	}
 
-	pods, err := clientset.CoreV1().Pods("").List(context.TODO(), metaV1.ListOptions{})
+	pods, err := clientset.CoreV1().Pods("").List(context.TODO(), metav1.ListOptions{})
 	if err != nil {
 		panic(err.Error())
 	}

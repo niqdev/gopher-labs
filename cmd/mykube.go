@@ -29,6 +29,8 @@ func invokeMyKubeCmd(cmd string) {
 	switch cmd {
 	case "list":
 		mykube.ListPods()
+	case "exec":
+		mykube.ExecPod()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)
