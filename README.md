@@ -2,6 +2,8 @@
 
 [![ci](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml/badge.svg)](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml)
 
+My Golang laboratory
+
 ## labs
 
 ### mydocker
