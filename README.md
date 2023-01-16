@@ -14,7 +14,6 @@
 go run labs.go mydocker --name [list|run|attach]
 ```
 
-<!--
 ### mykube
 
 ```bash
@@ -22,9 +21,8 @@ go run labs.go mydocker --name [list|run|attach]
 minikube start --driver=docker --embed-certs
 minikube delete --all
 
-go run labs.go mykube --name [create]
+go run labs.go mykube --name [list]
 ```
---->
 
 ### mylog
 
@@ -100,7 +98,6 @@ just
 ```
 
 TODO
-* kube
 * aws
 * config
 * http client/server json api

@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"log"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -26,6 +27,9 @@ var rootCmd = &cobra.Command{
 
 func init() {
 	rootCmd.SetHelpCommand(&cobra.Command{Hidden: true})
+
+	// removes timestamps
+	log.SetFlags(0)
 }
 
 func Execute() {
