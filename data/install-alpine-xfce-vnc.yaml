@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: examples
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: alpine-xfce-vnc
+  namespace: examples
+  labels:
+    app.kubernetes.io/name: box-edgelevel-alpine-xfce-vnc
+    app.kubernetes.io/version: "web-0.6.0"
+spec:
+  selector:
+    app.kubernetes.io/name: box-edgelevel-alpine-xfce-vnc
+    app.kubernetes.io/version: "web-0.6.0"
+  type: ClusterIP
+  ports:
+  - name: vnc
+    protocol: TCP
+    port: 5900
+    targetPort: vnc-svc
+  - name: novnc
+    protocol: TCP
+    port: 6080
+    targetPort: novnc-svc
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alpine-xfce-vnc
+  namespace: examples
+  labels:
+    app.kubernetes.io/name: box-edgelevel-alpine-xfce-vnc
+    app.kubernetes.io/version: "web-0.6.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: box-edgelevel-alpine-xfce-vnc
+      app.kubernetes.io/version: "web-0.6.0"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: box-edgelevel-alpine-xfce-vnc
+        app.kubernetes.io/version: "web-0.6.0"
+    spec:
+      containers:
+      - name: box-edgelevel-alpine-xfce-vnc
+        image: "edgelevel/alpine-xfce-vnc:web-0.6.0"
+        imagePullPolicy: IfNotPresent
+        tty: true
+        stdin: true
+        ports:
+        - name: vnc-svc
+          containerPort: 5900
+          protocol: TCP
+        - name: novnc-svc
+          containerPort: 6080
+          protocol: TCP
+        resources:
+          limits:
+            memory: 512Mi
+          requests:
+            cpu: 500m
+            memory: 512Mi
