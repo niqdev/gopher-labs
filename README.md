@@ -21,9 +21,8 @@ minikube delete --all
 
 go run labs.go mykube --name [list|exec]
 
-# install portforward example manually
+# setup portforward example
 kubectl apply -f ./data/install-alpine-xfce-vnc.yaml
-# install portforward example
 go run labs.go mykube --name create
 
 # vncviewer localhost:5900
