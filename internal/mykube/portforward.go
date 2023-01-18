@@ -7,8 +7,10 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"os/signal"
 	"path/filepath"
 	"sync"
+	"syscall"
 
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/client-go/kubernetes"
@@ -86,6 +88,22 @@ func PortForward() {
 	}()
 	for range readyChan {
 	}
+
+	// handles CTRL+C
+	signalChan := make(chan os.Signal)
+	signal.Notify(signalChan, os.Interrupt, syscall.SIGTERM)
+	go func() {
+		<-signalChan
+
+		// removes chars "^C" in "^Cexiting..."
+		// escape sequences, see https://en.wikipedia.org/wiki/ANSI_escape_code
+		// "\033[" is the Control Sequence Introducer (CSI) i.e. "ESC ["
+		// "CSI n G" moves the cursor to column n (default 1) i.e. "\033[G"
+		// "CSI n K" with n=0 or missing, clears from cursor to the end of the line i.e. "\033[K"
+		fmt.Print("\033[G\033[K")
+		log.Println("exiting...")
+		os.Exit(0)
+	}()
 
 	wg.Wait()
 }

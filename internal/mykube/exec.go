@@ -41,7 +41,7 @@ func ExecPod() {
 	}
 
 	// creates a busybox Pod: by running "cat", the Pod will sit and do nothing
-	pod, err := coreClient.Pods(namespace).Create(ctx, &corev1.Pod{
+	pod, err := coreClient.Pods(corev1.NamespaceDefault).Create(ctx, &corev1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "busybox",
 		},
