@@ -27,6 +27,8 @@ func init() {
 
 func invokeMyKubeCmd(cmd string) {
 	switch cmd {
+	case "create":
+		mykube.CreateAll()
 	case "list":
 		mykube.ListPods()
 	case "exec":
