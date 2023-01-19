@@ -6,6 +6,12 @@ My Golang laboratory
 
 ## labs
 
+### myconfig
+
+```bash
+go run labs.go myconfig
+```
+
 ### mydocker
 
 ```bash
@@ -111,7 +117,6 @@ just
 
 TODO
 * aws
-* config
 * http client/server json api
 * expose pkg
 * add docs
