@@ -2,47 +2,48 @@ package myconfig
 
 import (
 	"fmt"
+	"log"
+	"os"
 
 	"github.com/spf13/viper"
 )
 
-// https://medium.com/@bnprashanth256/reading-configuration-files-and-environment-variables-in-go-golang-c2607f912b63
 func Load() {
-	// Set the file name of the configurations file
-	viper.SetConfigName("config")
+	// name of config file (without extension)
+	viper.SetConfigName("myconfig")
 
-	// Set the path to look for the configurations file
+	// REQUIRED if the config file does not have the extension in the name
+	viper.SetConfigType("yaml")
+
+	// path to look for the config file in
+	// call multiple times to add many search paths
+	viper.AddConfigPath("./data")
 	viper.AddConfigPath(".")
 
-	// Enable VIPER to read Environment Variables
+	// env variables are case sensitive
 	viper.AutomaticEnv()
+	viper.SetEnvPrefix("tmp")
+	// keys are automatically uppercased and prefixed
+	os.Setenv("TMP_MYEXAMPLE.MYINT", "8")
 
-	viper.SetConfigType("yml")
-	var configuration Configurations
+	viper.SetDefault("myexample.mydefault", "DEFAULT")
 
 	if err := viper.ReadInConfig(); err != nil {
-		fmt.Printf("Error reading config file, %s", err)
+		log.Fatal(fmt.Errorf("error reading config: %w", err))
 	}
 
-	// Set undefined variables
-	viper.SetDefault("database.dbname", "test_db")
+	log.Println(fmt.Sprintf("myroot=%s", viper.GetString("myroot")))
+	log.Println(fmt.Sprintf("myexample.myint=%d", viper.GetInt("myexample.myint")))
+	log.Println(fmt.Sprintf("myexample.mystring=%s", viper.GetString("myexample.mystring")))
+	log.Println(fmt.Sprintf("myexample.mydefault=%s", viper.GetString("myexample.mydefault")))
 
-	err := viper.Unmarshal(&configuration)
-	if err != nil {
-		fmt.Printf("Unable to decode into struct, %v", err)
+	var myConfig MyConfig
+	if err := viper.Unmarshal(&myConfig); err != nil {
+		log.Fatal(fmt.Errorf("error decoding config: %w", err))
 	}
 
-	// Reading variables using the model
-	fmt.Println("Reading variables using the model..")
-	fmt.Println("Database is\t", configuration.Database.DBName)
-	fmt.Println("Port is\t\t", configuration.Server.Port)
-	fmt.Println("EXAMPLE_PATH is\t", configuration.EXAMPLE_PATH)
-	fmt.Println("EXAMPLE_VAR is\t", configuration.EXAMPLE_VAR)
-
-	// Reading variables without using the model
-	fmt.Println("\nReading variables without using the model..")
-	fmt.Println("Database is\t", viper.GetString("database.dbname"))
-	fmt.Println("Port is\t\t", viper.GetInt("server.port"))
-	fmt.Println("EXAMPLE_PATH is\t", viper.GetString("EXAMPLE_PATH"))
-	fmt.Println("EXAMPLE_VAR is\t", viper.GetString("EXAMPLE_VAR"))
+	log.Println(fmt.Sprintf("myroot=%s", myConfig.MyRoot))
+	log.Println(fmt.Sprintf("myexample.myint=%d", myConfig.MyExample.MyInt))
+	log.Println(fmt.Sprintf("myexample.mystring=%s", myConfig.MyExample.MyString))
+	log.Println(fmt.Sprintf("myexample.mydefault=%s", myConfig.MyExample.MyDefault))
 }

@@ -1,18 +1,12 @@
 package myconfig
 
-type Configurations struct {
-	Server       ServerConfigurations
-	Database     DatabaseConfigurations
-	EXAMPLE_PATH string
-	EXAMPLE_VAR  string
+type MyConfig struct {
+	MyRoot    string
+	MyExample MyExampleConfig
 }
 
-type ServerConfigurations struct {
-	Port int
-}
-
-type DatabaseConfigurations struct {
-	DBName     string
-	DBUser     string
-	DBPassword string
+type MyExampleConfig struct {
+	MyInt     int
+	MyString  string
+	MyDefault string
 }
