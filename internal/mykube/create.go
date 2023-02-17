@@ -16,6 +16,8 @@ import (
 	"k8s.io/client-go/util/homedir"
 )
 
+const namespaceName = "examples"
+
 func CreateAll() {
 	ctx := context.TODO()
 	kubeconfig := filepath.Join(homedir.HomeDir(), ".kube", "config")
@@ -52,7 +54,7 @@ func CreateAll() {
 func buildNamespace() *corev1.Namespace {
 	return &corev1.Namespace{
 		ObjectMeta: metav1.ObjectMeta{
-			Name: "examples",
+			Name: namespaceName,
 		},
 	}
 }
@@ -68,7 +70,7 @@ func buildPod() *corev1.Pod {
 	return &corev1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "edgelevel-alpine-xfce-vnc",
-			Namespace: "examples",
+			Namespace: namespaceName,
 			Labels:    buildLabels(),
 		},
 		Spec: corev1.PodSpec{
@@ -115,7 +117,7 @@ func buildDeployment() *appsv1.Deployment {
 	return &appsv1.Deployment{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "alpine-xfce-vnc-deployment",
-			Namespace: "examples",
+			Namespace: namespaceName,
 			Labels:    buildLabels(),
 		},
 		Spec: appsv1.DeploymentSpec{
@@ -135,7 +137,7 @@ func buildService() *corev1.Service {
 	return &corev1.Service{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "alpine-xfce-vnc-service",
-			Namespace: "examples",
+			Namespace: namespaceName,
 			Labels:    buildLabels(),
 		},
 		Spec: corev1.ServiceSpec{
