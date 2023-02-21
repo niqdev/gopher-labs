@@ -10,6 +10,7 @@ var myConfigCmd = &cobra.Command{
 	Short: "load configs from file",
 	Run: func(cmd *cobra.Command, args []string) {
 		myconfig.Load()
+		myconfig.YamlExample()
 	},
 }
 
