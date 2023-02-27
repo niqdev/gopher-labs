@@ -7,6 +7,8 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
+// NOTE: lowercase fields are NOT exported!
+
 func newMyConfig() *MyConfig {
 	return &MyConfig{
 		MyRoot: "foo-new",

@@ -34,6 +34,9 @@ go run labs.go mykube --name create
 # vncviewer localhost:5900
 # http://localhost:6080
 go run labs.go mykube --name portforward
+
+# pre-download to solve issue: ErrImagePull (120 seconds timeout)
+minikube image load edgelevel/alpine-xfce-vnc:web-0.6.0
 ```
 
 ### mylog
