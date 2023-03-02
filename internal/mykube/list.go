@@ -4,12 +4,14 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
+	"path/filepath"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/util/homedir"
 )
 
 func ListPods() {
@@ -22,25 +24,56 @@ func ListPods() {
 			log.Println(fmt.Sprintf("  %s = %s", keyLabel, valueLabel))
 		}
 	}
+
+	listPodsForService(context.TODO(), corev1.NamespaceAll)
 }
 
-func getPods(ctx context.Context, namespace string, podSelector string) []corev1.Pod {
-	kubeconfig := os.Getenv("HOME") + "/.kube/config"
+func getClientSet() *kubernetes.Clientset {
+	kubeconfig := filepath.Join(homedir.HomeDir(), ".kube", "config")
 
 	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
 	if err != nil {
-		log.Fatalf("error kubeconfig: %v", err)
+		log.Fatalf("error restConfig: %v", err)
 	}
 
-	clientset, err := kubernetes.NewForConfig(restConfig)
+	clientSet, err := kubernetes.NewForConfig(restConfig)
 	if err != nil {
-		log.Fatalf("error clientset: %v", err)
+		log.Fatalf("error clientSet: %v", err)
 	}
+	return clientSet
+}
 
-	pods, err := clientset.CoreV1().Pods(namespace).List(ctx, metav1.ListOptions{LabelSelector: podSelector})
+func getPods(ctx context.Context, namespace string, podSelector string) []corev1.Pod {
+	clientSet := getClientSet()
+
+	pods, err := clientSet.CoreV1().Pods(namespace).List(ctx, metav1.ListOptions{LabelSelector: podSelector})
 	if err != nil {
 		log.Fatalf("error list: %v", err)
 	}
 
 	return pods.Items
+}
+
+func listPodsForService(ctx context.Context, namespace string) {
+	clientSet := getClientSet()
+
+	services, err := clientSet.CoreV1().Services(namespace).List(ctx, metav1.ListOptions{})
+	if err != nil {
+		log.Fatalf("error create service: %v", err)
+	}
+
+	for _, service := range services.Items {
+		log.Println(fmt.Sprintf("pods for service: name=%s, labels=%v", service.Name, service.GetLabels()))
+
+		labelSet := labels.Set(service.Spec.Selector)
+		listOptions := metav1.ListOptions{LabelSelector: labelSet.AsSelector().String()}
+
+		if pods, err := clientSet.CoreV1().Pods(namespace).List(ctx, listOptions); err != nil {
+			log.Fatalf("error list pods: %v", err)
+		} else {
+			for _, pod := range pods.Items {
+				log.Println(fmt.Sprintf("* %s", pod.GetName()))
+			}
+		}
+	}
 }

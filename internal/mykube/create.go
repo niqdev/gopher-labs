@@ -60,6 +60,7 @@ func buildNamespace() *corev1.Namespace {
 }
 
 func buildLabels() map[string]string {
+	// https://kubernetes.io/docs/concepts/overview/working-with-objects/common-labels
 	return map[string]string{
 		"app.kubernetes.io/name":    "edgelevel-alpine-xfce-vnc",
 		"app.kubernetes.io/version": "web-0.6.0",
