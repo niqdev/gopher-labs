@@ -59,7 +59,7 @@ func listPodsForService(ctx context.Context, namespace string) {
 
 	services, err := clientSet.CoreV1().Services(namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {
-		log.Fatalf("error create service: %v", err)
+		log.Fatalf("error list service: %v", err)
 	}
 
 	for _, service := range services.Items {
