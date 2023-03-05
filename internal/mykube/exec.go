@@ -17,6 +17,7 @@ import (
 )
 
 // https://miminar.fedorapeople.org/_preview/openshift-enterprise/registry-redeploy/go_client/executing_remote_processes.html
+// https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/exec/exec.go
 func ExecPod() {
 	ctx := context.TODO()
 
