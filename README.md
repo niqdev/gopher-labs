@@ -1,6 +1,7 @@
 # gopher-labs
 
 [![ci](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml/badge.svg)](https://github.com/niqdev/gopher-labs/actions/workflows/ci.yaml)
+[![Go Reference](https://pkg.go.dev/badge/github.com/niqdev/gopher-labs.svg)](https://pkg.go.dev/github.com/niqdev/gopher-labs)
 
 My Golang laboratory experiments :hourglass_flowing_sand:
 
@@ -110,6 +111,9 @@ go mod init github.com/niqdev/gopher-labs
 # install|update dependencies
 go mod tidy
 
+# TODO tests
+go test ./...
+
 # run
 go run labs.go
 
@@ -117,6 +121,18 @@ go run labs.go
 just
 ./build/labs
 ```
+
+Publish
+* [Publishing a module](https://go.dev/doc/modules/publishing)
+* [How to publish a Go package](https://stackoverflow.com/questions/43716691/how-to-publish-a-go-package)
+```bash
+git tag vX.Y.Z
+git push origin --tags
+
+# refresh index
+GOPROXY=proxy.golang.org go list -m github.com/niqdev/gopher-labs@vX.Y.Z
+```
+
 
 TODO
 * aws
