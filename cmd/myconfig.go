@@ -7,7 +7,7 @@ import (
 
 var myConfigCmd = &cobra.Command{
 	Use:   "myconfig",
-	Short: "load configs from file",
+	Short: "Load configs from file",
 	Run: func(cmd *cobra.Command, args []string) {
 		myconfig.Load()
 		myconfig.Format()

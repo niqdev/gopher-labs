@@ -121,7 +121,6 @@ just
 TODO
 * aws
 * http client/server json api
-* expose pkg
 * add docs
 * vet/fmt/lint action
 * tests
