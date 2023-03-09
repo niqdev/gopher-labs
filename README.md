@@ -111,7 +111,7 @@ go mod init github.com/niqdev/gopher-labs
 # install|update dependencies
 go mod tidy
 
-# TODO tests
+# tests
 go test ./...
 
 # run
@@ -131,12 +131,13 @@ git push origin --tags
 
 # refresh index
 GOPROXY=proxy.golang.org go list -m github.com/niqdev/gopher-labs@vX.Y.Z
+
+# install
+go get github.com/niqdev/gopher-labs
 ```
 
 
 TODO
 * aws
 * http client/server json api
-* add docs
 * vet/fmt/lint action
-* tests
