@@ -33,7 +33,7 @@ func connect(address string, sshConfig *ssh.ClientConfig) {
 		log.Fatalf("failed to create session: %v", err)
 	}
 
-	log.Printf("[%s] ssh connection estabilished (%s)", client.RemoteAddr(), client.ClientVersion())
+	log.Printf("[%s] ssh connection established (%s)", client.RemoteAddr(), client.ClientVersion())
 
 	defer session.Close()
 }
