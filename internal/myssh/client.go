@@ -28,13 +28,12 @@ func connect(address string, sshConfig *ssh.ClientConfig) {
 	if err != nil {
 		log.Fatalf("failed to dial: %v", err)
 	}
-	log.Printf("[%s] new ssh connection (%s)", client.RemoteAddr(), client.ClientVersion())
-
 	session, err := client.NewSession()
 	if err != nil {
 		log.Fatalf("failed to create session: %v", err)
 	}
-	log.Printf("[%s] new ssh connection", client.RemoteAddr())
+
+	log.Printf("[%s] ssh connection estabilished (%s)", client.RemoteAddr(), client.ClientVersion())
 
 	defer session.Close()
 }
