@@ -1,12 +1,16 @@
 BUILD_PATH := "./build"
 BIN_NAME := "labs"
 
-default: build
+default:
+  @just --list
 
 format:
   go fmt ./...
 
-build: format
+test:
+	go test ./...
+
+build: format test
   rm -frv {{BUILD_PATH}}
   go build \
     -ldflags="-X github.com/niqdev/gopher-labs/internal.Version=$(git rev-parse HEAD)" \

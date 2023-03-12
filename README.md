@@ -111,14 +111,14 @@ go mod init github.com/niqdev/gopher-labs
 # install|update dependencies
 go mod tidy
 
-# tests
-go test ./...
-
 # run
 go run labs.go
 
-# build
+# list recipes
 just
+
+# build
+just build
 ./build/labs
 ```
 
