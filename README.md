@@ -90,6 +90,7 @@ go run \
 
 * [go](https://go.dev/doc) documentation
 * [Go by Example](https://gobyexample.com)
+* [Effective Go](https://github.com/golovers/effective-go)
 * [Standard library](https://pkg.go.dev/std)
 
 ## Development
