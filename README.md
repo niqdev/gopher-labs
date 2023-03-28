@@ -7,6 +7,13 @@ My Golang laboratory experiments :hourglass_flowing_sand:
 
 ## labs
 
+### myargo
+
+```bash
+# list applications
+go run labs.go myargo list
+```
+
 ### myconfig
 
 ```bash
