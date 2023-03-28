@@ -3,43 +3,33 @@ package myargo
 import (
 	"context"
 	"fmt"
-
 	"github.com/spf13/cobra"
 	"k8s.io/utils/pointer"
 
 	"github.com/argoproj/argo-cd/v2/cmd/argocd/commands/headless"
-	"github.com/argoproj/argo-cd/v2/pkg/apiclient"
 	argocdclient "github.com/argoproj/argo-cd/v2/pkg/apiclient"
 	applicationpkg "github.com/argoproj/argo-cd/v2/pkg/apiclient/application"
 	argoio "github.com/argoproj/argo-cd/v2/util/io"
-	"github.com/argoproj/argo-cd/v2/util/localconfig"
 )
 
-// TODO cleanup unused go mod
-
-func NewArgoCdClient(argocdConfigPath string) (apiclient.Client, error) {
-	if argocdConfigPath == "" {
-		var err error
-		argocdConfigPath, err = localconfig.DefaultLocalConfigPath()
-		if err != nil {
-			return nil, err
-		}
-	}
-	var argocdCliOpts apiclient.ClientOptions
-	argocdCliOpts.ConfigPath = argocdConfigPath
-	return argocdclient.NewClient(&argocdCliOpts)
-}
-
 func ListApplications() {
+	// without env portforward uses by default "~/.kube/config"
+	//os.Setenv(clientcmd.RecommendedConfigPathEnvVar, "/my/kubeconfig/path")
+
+	// out-of-cluster kube config
+	clientOpts := &argocdclient.ClientOptions{Core: true}
+	c := &cobra.Command{}
+	c.SetContext(context.Background())
+
+	// starts local server and forward requests to cluster
+	argoCdClient := headless.NewClientOrDie(clientOpts, c)
+	conn, appIf := argoCdClient.NewApplicationClientOrDie()
+	defer argoio.Close(conn)
+
 	var (
-		selector     = "app.kubernetes.io/instance"
+		selector     = "" // all applications
 		appNamespace = "argocd"
 	)
-
-	clientOpts := &argocdclient.ClientOptions{}
-	argocdClient := headless.NewClientOrDie(clientOpts, &cobra.Command{})
-	conn, appIf := argocdClient.NewApplicationClientOrDie()
-	defer argoio.Close(conn)
 	apps, err := appIf.List(context.Background(), &applicationpkg.ApplicationQuery{
 		Selector:     pointer.String(selector),
 		AppNamespace: &appNamespace,
@@ -47,5 +37,7 @@ func ListApplications() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(apps.String())
+	for _, app := range apps.Items {
+		fmt.Println(app.QualifiedName())
+	}
 }
