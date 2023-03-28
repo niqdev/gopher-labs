@@ -89,6 +89,7 @@ func PortForward() {
 	for range readyChan {
 	}
 
+	// TODO fix go vet
 	// handles CTRL+C
 	signalChan := make(chan os.Signal)
 	signal.Notify(signalChan, os.Interrupt, syscall.SIGTERM)

@@ -141,4 +141,3 @@ go get github.com/niqdev/gopher-labs
 TODO
 * aws
 * http client/server json api
-* vet/fmt/lint action
