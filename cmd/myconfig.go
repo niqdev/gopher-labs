@@ -1,8 +1,9 @@
 package cmd
 
 import (
-	"github.com/niqdev/gopher-labs/internal/myconfig"
 	"github.com/spf13/cobra"
+
+	"github.com/niqdev/gopher-labs/internal/myconfig"
 )
 
 var myConfigCmd = &cobra.Command{

@@ -10,11 +10,12 @@ import (
 	"sync"
 
 	"github.com/dchest/uniuri"
+	"golang.org/x/crypto/ssh/terminal"
+
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	"github.com/docker/go-connections/nat"
-	"golang.org/x/crypto/ssh/terminal"
 )
 
 func Attach() {

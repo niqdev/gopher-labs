@@ -3,8 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	v "github.com/niqdev/gopher-labs/internal"
 	"github.com/spf13/cobra"
+
+	v "github.com/niqdev/gopher-labs/internal"
 )
 
 var versionCmd = &cobra.Command{

@@ -3,8 +3,9 @@ package cmd
 import (
 	"os"
 
-	"github.com/niqdev/gopher-labs/internal/myssh"
 	"github.com/spf13/cobra"
+
+	"github.com/niqdev/gopher-labs/internal/myssh"
 )
 
 func NewMySshCmd() *cobra.Command {

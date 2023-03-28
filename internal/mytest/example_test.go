@@ -3,8 +3,9 @@ package mytest
 import (
 	"testing"
 
-	example "github.com/niqdev/gopher-labs/pkg"
 	"github.com/stretchr/testify/assert"
+
+	example "github.com/niqdev/gopher-labs/pkg"
 )
 
 func TestHelloEmpty(t *testing.T) {
