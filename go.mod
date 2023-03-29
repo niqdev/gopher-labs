@@ -6,7 +6,7 @@ require (
 	github.com/argoproj/argo-cd/v2 v2.6.7
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
-	github.com/docker/docker v23.0.1+incompatible
+	github.com/docker/docker v23.0.2+incompatible
 	github.com/docker/go-connections v0.4.0
 	github.com/santhosh-tekuri/jsonschema/v5 v5.2.0
 	github.com/spf13/cobra v1.6.1
