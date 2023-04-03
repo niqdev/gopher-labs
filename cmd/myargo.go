@@ -19,14 +19,22 @@ func NewMyArgoCmd() *cobra.Command {
 
 	listCmd := &cobra.Command{
 		Use:   "list",
-		Short: "list applications",
+		Short: "list argo-cd applications",
 		Run: func(cmd *cobra.Command, args []string) {
 			myargo.ListApplications()
 		},
 	}
 
-	command.AddCommand(listCmd)
+	submitCmd := &cobra.Command{
+		Use:   "submit",
+		Short: "submit argo workflow",
+		Run: func(cmd *cobra.Command, args []string) {
+			myargo.SubmitWorkflow()
+		},
+	}
 
+	command.AddCommand(listCmd)
+	command.AddCommand(submitCmd)
 	return command
 }
 

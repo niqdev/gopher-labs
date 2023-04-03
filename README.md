@@ -10,13 +10,17 @@ My Golang laboratory experiments :hourglass_flowing_sand:
 ### myargo
 
 ```bash
-# list applications
+# lists argo-cd applications
 go run labs.go myargo list
+
+# submits argo workflow
+go run labs.go myargo submit
 ```
 
 ### myconfig
 
 ```bash
+# prints config examples
 go run labs.go myconfig
 ```
 
@@ -57,7 +61,7 @@ go run labs.go mylog
 ### myschema
 
 ```bash
-# JSON and Yaml schema validation
+# json and yaml schema validation
 go run labs.go myschema
 ```
 
@@ -116,8 +120,13 @@ Setup
 # init project (first time)
 go mod init github.com/niqdev/gopher-labs
 
-# install|update dependencies
+# update dependencies
 go mod tidy
+
+# install dependencies (examples)
+go get github.com/argoproj/argo-cd/v2
+go get github.com/argoproj/argo-workflows/v3
+go mod vendor
 
 # run
 go run labs.go

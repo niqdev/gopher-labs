@@ -3,6 +3,7 @@ package myargo
 import (
 	"context"
 	"fmt"
+
 	"github.com/spf13/cobra"
 	"k8s.io/utils/pointer"
 
@@ -16,7 +17,7 @@ func ListApplications() {
 	// without env portforward uses by default "~/.kube/config"
 	//os.Setenv(clientcmd.RecommendedConfigPathEnvVar, "/my/kubeconfig/path")
 
-	// out-of-cluster kube config
+	// sets out-of-cluster kube config
 	clientOpts := &argocdclient.ClientOptions{Core: true}
 	c := &cobra.Command{}
 	c.SetContext(context.Background())
