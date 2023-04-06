@@ -5,10 +5,9 @@ go 1.19
 require (
 	github.com/argoproj/argo-cd/v2 v2.6.7
 	github.com/argoproj/argo-workflows/v3 v3.4.6
-	github.com/argoproj/pkg v0.13.7-0.20221221191914-44694015343d
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
-	github.com/docker/docker v23.0.2+incompatible
+	github.com/docker/docker v23.0.3+incompatible
 	github.com/docker/go-connections v0.4.0
 	github.com/santhosh-tekuri/jsonschema/v5 v5.2.0
 	github.com/spf13/cobra v1.6.1
@@ -44,9 +43,9 @@ require (
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
 	github.com/alicebob/miniredis/v2 v2.23.1 // indirect
 	github.com/antonmedv/expr v1.10.5 // indirect
-	github.com/argoproj/argo-events v1.7.3 // indirect
 	github.com/argoproj/gitops-engine v0.7.1-0.20221208230615-917f5a0f16d5 // indirect
 	github.com/argoproj/notifications-engine v0.3.1-0.20221203221941-490d98afd1d6 // indirect
+	github.com/argoproj/pkg v0.13.7-0.20221221191914-44694015343d // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
@@ -55,14 +54,11 @@ require (
 	github.com/casbin/casbin/v2 v2.60.0 // indirect
 	github.com/cespare/xxhash/v2 v2.1.2 // indirect
 	github.com/chai2010/gettext-go v1.0.2 // indirect
-	github.com/colinmarc/hdfs v1.1.4-0.20180805212432-9746310a4d31 // indirect
 	github.com/coreos/go-oidc v2.2.1+incompatible // indirect
-	github.com/coreos/go-oidc/v3 v3.5.0 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/docker/distribution v2.8.1+incompatible // indirect
 	github.com/docker/go-units v0.5.0 // indirect
-	github.com/doublerebel/bellows v0.0.0-20160303004610-f177d92a03d3 // indirect
 	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
 	github.com/emirpasic/gods v1.12.0 // indirect
 	github.com/evanphx/json-patch v5.6.0+incompatible // indirect
@@ -77,7 +73,6 @@ require (
 	github.com/go-git/gcfg v1.5.0 // indirect
 	github.com/go-git/go-billy/v5 v5.3.1 // indirect
 	github.com/go-git/go-git/v5 v5.4.2 // indirect
-	github.com/go-jose/go-jose/v3 v3.0.0 // indirect
 	github.com/go-logr/logr v1.2.3 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-openapi/analysis v0.21.4 // indirect
@@ -92,7 +87,6 @@ require (
 	github.com/go-openapi/validate v0.21.0 // indirect
 	github.com/go-redis/cache/v8 v8.4.2 // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
-	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/go-telegram-bot-api/telegram-bot-api/v5 v5.5.1 // indirect
 	github.com/gobwas/glob v0.2.4-0.20181002190808-e7a84e9525fe // indirect
 	github.com/gogits/go-gogs-client v0.0.0-20190616193657-5a05380e4bc2 // indirect
@@ -119,22 +113,18 @@ require (
 	github.com/grpc-ecosystem/grpc-gateway v1.16.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-retryablehttp v0.7.1 // indirect
-	github.com/hashicorp/go-uuid v1.0.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/huandu/xstrings v1.3.3 // indirect
 	github.com/imdario/mergo v0.3.13 // indirect
 	github.com/improbable-eng/grpc-web v0.0.0-20181111100011-16092bd1d58a // indirect
 	github.com/inconshreveable/mousetrap v1.0.1 // indirect
 	github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 // indirect
-	github.com/jcmturner/gofork v1.0.0 // indirect
 	github.com/jonboulle/clockwork v0.2.2 // indirect
 	github.com/josharian/intern v1.0.0 // indirect
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/kevinburke/ssh_config v1.2.0 // indirect
 	github.com/klauspost/compress v1.15.9 // indirect
-	github.com/klauspost/pgzip v1.2.5 // indirect
-	github.com/lib/pq v1.10.4 // indirect
 	github.com/liggitt/tabwriter v0.0.0-20181228230101-89fcab3d43de // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
@@ -154,7 +144,6 @@ require (
 	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
-	github.com/oliveagle/jsonpath v0.0.0-20180606110733-2e52cf6e6852 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/opencontainers/image-spec v1.0.3-0.20220114050600-8b9d41f48198 // indirect
 	github.com/opsgenie/opsgenie-go-sdk-v2 v1.0.5 // indirect
@@ -170,10 +159,10 @@ require (
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/r3labs/diff v1.1.0 // indirect
 	github.com/robfig/cron/v3 v3.0.1 // indirect
+	github.com/rogpeppe/go-internal v1.8.1 // indirect
 	github.com/rs/cors v1.8.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
-	github.com/sethvargo/go-limiter v0.7.2 // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
 	github.com/slack-go/slack v0.11.2 // indirect
@@ -220,10 +209,6 @@ require (
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
-	gopkg.in/jcmturner/aescts.v1 v1.0.1 // indirect
-	gopkg.in/jcmturner/dnsutils.v1 v1.0.1 // indirect
-	gopkg.in/jcmturner/gokrb5.v5 v5.3.0 // indirect
-	gopkg.in/jcmturner/rpc.v0 v0.0.2 // indirect
 	gopkg.in/square/go-jose.v2 v2.6.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
@@ -243,7 +228,6 @@ require (
 	sigs.k8s.io/kustomize/kyaml v0.13.9 // indirect
 	sigs.k8s.io/structured-merge-diff/v4 v4.2.3 // indirect
 	sigs.k8s.io/yaml v1.3.0 // indirect
-	upper.io/db.v3 v3.8.0+incompatible // indirect
 )
 
 // https://argo-cd.readthedocs.io/en/stable/user-guide/import
