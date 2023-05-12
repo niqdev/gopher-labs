@@ -30,6 +30,14 @@ go run labs.go myconfig
 go run labs.go mydocker --name [list|run|attach]
 ```
 
+### myhttp
+
+```bash
+docker run -p 8080:80 kennethreitz/httpbin
+
+go run labs.go myhttp --name [client|server]
+```
+
 ### mykube
 
 ```bash
@@ -126,6 +134,7 @@ go mod tidy
 # install dependencies (examples)
 go get github.com/argoproj/argo-cd/v2
 go get github.com/argoproj/argo-workflows/v3
+go get -u github.com/hashicorp/go-retryablehttp
 go mod vendor
 
 # run
@@ -156,4 +165,4 @@ go get github.com/niqdev/gopher-labs
 
 TODO
 * aws
-* http client/server json api
+* http client/server json api + test
