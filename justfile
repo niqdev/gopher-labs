@@ -15,7 +15,7 @@ vet:
   go vet {{GO_FILES}}
 
 test:
-  go test {{GO_FILES}} -cover
+  go test {{GO_FILES}} -v -timeout 30s -cover
 
 build $VERSION_COMMIT="$(git rev-parse HEAD)": format test
   rm -frv {{BUILD_PATH}}

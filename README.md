@@ -135,6 +135,8 @@ go mod tidy
 go get github.com/argoproj/argo-cd/v2
 go get github.com/argoproj/argo-workflows/v3
 go get -u github.com/hashicorp/go-retryablehttp
+go get github.com/onsi/ginkgo/v2
+go get github.com/onsi/gomega/...
 go mod vendor
 
 # run
@@ -146,6 +148,9 @@ just
 # build
 just build
 ./build/labs
+
+# test
+just test
 ```
 
 Publish

@@ -31,5 +31,3 @@ func TestHello(t *testing.T) {
 func TestAssertions(t *testing.T) {
 	assert.Equal(t, 123, 123, "they should be equal")
 }
-
-// TODO https://onsi.github.io/ginkgo
