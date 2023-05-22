@@ -16,6 +16,12 @@ go run labs.go myargo list
 # submits argo workflow
 go run labs.go myargo submit
 ```
+### myconcurrency
+
+```bash
+# uses goroutine and channels
+go run labs.go myconcurrency
+```
 
 ### myconfig
 

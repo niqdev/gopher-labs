@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"sync"
@@ -38,7 +37,7 @@ func Attach() {
 
 	// suppress output
 	// io.Copy(os.Stdout, reader)
-	io.Copy(ioutil.Discard, reader)
+	io.Copy(io.Discard, reader)
 
 	containerConfig := &container.Config{
 		Image:        imageName,
