@@ -3,7 +3,7 @@ module github.com/niqdev/gopher-labs
 go 1.19
 
 require (
-	github.com/argoproj/argo-cd/v2 v2.7.2
+	github.com/argoproj/argo-cd/v2 v2.7.3
 	github.com/argoproj/argo-workflows/v3 v3.4.7
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
@@ -44,7 +44,7 @@ require (
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
 	github.com/alicebob/miniredis/v2 v2.23.1 // indirect
 	github.com/antonmedv/expr v1.12.5 // indirect
-	github.com/argoproj/gitops-engine v0.7.1-0.20230214165351-ed70eac8b7bd // indirect
+	github.com/argoproj/gitops-engine v0.7.1-0.20230512020822-b4dd8b8c3976 // indirect
 	github.com/argoproj/notifications-engine v0.4.1-0.20230228182525-f754726f03da // indirect
 	github.com/argoproj/pkg v0.13.7-0.20221221191914-44694015343d // indirect
 	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d // indirect
