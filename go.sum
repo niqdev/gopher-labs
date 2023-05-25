@@ -117,12 +117,12 @@ github.com/antonmedv/expr v1.12.5 h1:Fq4okale9swwL3OeLLs9WD9H6GbgBLJyN/NUHRv+n0E
 github.com/antonmedv/expr v1.12.5/go.mod h1:FPC8iWArxls7axbVLsW+kpg1mz29A1b2M6jt+hZfDkU=
 github.com/aokoli/goutils v1.0.1/go.mod h1:SijmP0QR8LtwsmDs8Yii5Z/S4trXFGFC2oO5g9DP+DQ=
 github.com/appscode/go v0.0.0-20191119085241-0887d8ec2ecc/go.mod h1:OawnOmAL4ZX3YaPdN+8HTNwBveT1jMsqP74moa9XUbE=
-github.com/argoproj/argo-cd/v2 v2.7.2 h1:3sv9jiYtRB6nA9h9lMOOxBVO9UzkpiyRrFvHdOJv/Do=
-github.com/argoproj/argo-cd/v2 v2.7.2/go.mod h1:bB2H6vHO29xf32Nzxg1CJKrJBE48r7frkzbzKxx1BKM=
+github.com/argoproj/argo-cd/v2 v2.7.3 h1:0NNLqVWPE96bEgAZI3TYWtmy6y98rYiEY963z9evycU=
+github.com/argoproj/argo-cd/v2 v2.7.3/go.mod h1:qkTbgsrfa7SPvwmcineNPrz8MfzPlJmD3lN5QchL/5A=
 github.com/argoproj/argo-workflows/v3 v3.4.7 h1:jtJtlaJArdgnHBxm3Ue6lt/mrzpPF99K3MMC/vY4TWg=
 github.com/argoproj/argo-workflows/v3 v3.4.7/go.mod h1:qI55HmnDc2pFNItTPGQnasF96MP9fOyLT/CCClK4tqg=
-github.com/argoproj/gitops-engine v0.7.1-0.20230214165351-ed70eac8b7bd h1:4Y76oXOZ2b7px7ppRSNpdxFPhUEw5e3BYEWpxn8pO2I=
-github.com/argoproj/gitops-engine v0.7.1-0.20230214165351-ed70eac8b7bd/go.mod h1:WpA/B7tgwfz+sdNE3LqrTrb7ArEY1FOPI2pAGI0hfPc=
+github.com/argoproj/gitops-engine v0.7.1-0.20230512020822-b4dd8b8c3976 h1:8i12dOcimhwrJxUznzZR/NW4JpIL5DXZjkI3Bl3yh38=
+github.com/argoproj/gitops-engine v0.7.1-0.20230512020822-b4dd8b8c3976/go.mod h1:WpA/B7tgwfz+sdNE3LqrTrb7ArEY1FOPI2pAGI0hfPc=
 github.com/argoproj/notifications-engine v0.4.1-0.20230228182525-f754726f03da h1:Vf9xvHcXn4TP/nLIfWn+TaC521V9fpz/DwRP6uEeVR8=
 github.com/argoproj/notifications-engine v0.4.1-0.20230228182525-f754726f03da/go.mod h1:05koR0gE/O0i5YDbidg1dpr76XitK4DJveh+dIAq6e8=
 github.com/argoproj/pkg v0.13.7-0.20221221191914-44694015343d h1:7fXEKF3OQ9i1PrgieA6FLrXOL3UAKyiotomn0RHevds=
