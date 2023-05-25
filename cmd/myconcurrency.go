@@ -12,6 +12,8 @@ func NewMyConcurrencyCmd() *cobra.Command {
 		Short: "Concurrency examples",
 		Run: func(cmd *cobra.Command, args []string) {
 			myconcurrency.ColorFilter()
+			// TODO
+			//myconcurrency.ColorFilterGroup()
 		},
 	}
 }

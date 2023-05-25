@@ -37,8 +37,8 @@ func findPrimary(colorChan chan MyColor) {
 	close(colorChan)
 }
 
-func randomColor() MyColor {
-	colors := []MyColor{
+func allColor() []MyColor {
+	return []MyColor{
 		{name: "red", primary: true},
 		{name: "green", primary: true},
 		{name: "blue", primary: true},
@@ -49,6 +49,10 @@ func randomColor() MyColor {
 		{name: "black", primary: false},
 		{name: "orange", primary: false},
 	}
+}
+
+func randomColor() MyColor {
+	colors := allColor()
 	return colors[rand.Intn(len(colors))]
 }
 
