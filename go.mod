@@ -7,7 +7,7 @@ require (
 	github.com/argoproj/argo-workflows/v3 v3.4.7
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
-	github.com/docker/docker v24.0.1+incompatible
+	github.com/docker/docker v24.0.2+incompatible
 	github.com/docker/go-connections v0.4.0
 	github.com/hashicorp/go-retryablehttp v0.7.2
 	github.com/onsi/ginkgo/v2 v2.9.5
