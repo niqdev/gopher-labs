@@ -16,6 +16,7 @@ func newMyConfig() *MyConfig {
 			MyInt:     8,
 			MyString:  "bar-new",
 			MyDefault: "default-new",
+			MyDash:    "dash-new",
 		},
 	}
 }

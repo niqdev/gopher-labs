@@ -2,3 +2,4 @@ myroot: foo
 myexample:
   myint: 42
   mystring: bar
+  my-dash: hello
