@@ -1,0 +1,24 @@
+# context
+https://btree.dev/golang-context
+
+# log
+https://blog.logrocket.com/5-structured-logging-packages-for-go
+
+# pointers
+https://www.digitalocean.com/community/conceptual-articles/understanding-pointers-in-go
+
+# defer
+https://www.digitalocean.com/community/tutorials/understanding-defer-in-go
+
+# enum
+https://stackoverflow.com/questions/50824554/permitted-flag-values-for-cobra
+
+# import cycles
+https://jogendra.dev/import-cycles-in-golang-and-how-to-deal-with-them
+
+# generics
+https://benjiv.com/golang-generics-introduction
+
+# abstract class
+https://stackoverflow.com/questions/30261032/how-to-implement-an-abstract-class-in-go
+https://golangbyexample.com/go-abstract-class
