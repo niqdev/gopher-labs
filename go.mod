@@ -3,7 +3,7 @@ module github.com/niqdev/gopher-labs
 go 1.19
 
 require (
-	github.com/argoproj/argo-cd/v2 v2.7.9
+	github.com/argoproj/argo-cd/v2 v2.7.10
 	github.com/argoproj/argo-workflows/v3 v3.4.9
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
