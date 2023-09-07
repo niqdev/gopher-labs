@@ -3,7 +3,7 @@ module github.com/niqdev/gopher-labs
 go 1.19
 
 require (
-	github.com/argoproj/argo-cd/v2 v2.8.0
+	github.com/argoproj/argo-cd/v2 v2.8.3
 	github.com/argoproj/argo-workflows/v3 v3.4.10
 	github.com/aws/aws-sdk-go-v2 v1.21.0
 	github.com/aws/aws-sdk-go-v2/config v1.18.39
@@ -242,7 +242,7 @@ require (
 	k8s.io/kubectl v0.24.3 // indirect
 	k8s.io/kubernetes v1.24.2 // indirect
 	layeh.com/gopher-json v0.0.0-20190114024228-97fed8db8427 // indirect
-	nhooyr.io/websocket v1.8.6 // indirect
+	nhooyr.io/websocket v1.8.7 // indirect
 	oras.land/oras-go/v2 v2.2.0 // indirect
 	sigs.k8s.io/controller-runtime v0.11.2 // indirect
 	sigs.k8s.io/json v0.0.0-20220713155537-f223a00ba0e2 // indirect
