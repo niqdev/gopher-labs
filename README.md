@@ -16,6 +16,37 @@ go run labs.go myargo list
 # submits argo workflow
 go run labs.go myargo submit
 ```
+
+### myaws
+
+* [AWS SDK for Go](https://aws.github.io/aws-sdk-go-v2/docs) documentation
+* [AWS SDK for Go V2 code examples for Amazon SQS](https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/gov2/sqs)
+
+```bash
+make local-up
+
+curl http://localhost:4566/health | jq
+
+# create (see entrypoint folder)
+docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs create-queue \
+  --queue-name go-sqs-example
+
+# list
+docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs list-queues
+
+# produce
+docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs send-message \
+  --queue-url http://localstack:4566/000000000000/go-sqs-example \
+  --message-body "hello"
+
+# consume
+docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs receive-message \
+  --queue-url http://localstack:4566/000000000000/go-sqs-example
+
+go run labs.go myaws --name sqs-write
+go run labs.go myaws --name sqs-read
+```
+
 ### myconcurrency
 
 ```bash
@@ -143,6 +174,9 @@ go get github.com/argoproj/argo-workflows/v3
 go get -u github.com/hashicorp/go-retryablehttp
 go get github.com/onsi/ginkgo/v2
 go get github.com/onsi/gomega/...
+go get github.com/aws/aws-sdk-go-v2
+go get github.com/aws/aws-sdk-go-v2/config
+go get github.com/aws/aws-sdk-go-v2/service/sqs
 go mod vendor
 
 # run
@@ -172,9 +206,3 @@ GOPROXY=proxy.golang.org go list -m github.com/niqdev/gopher-labs@vX.Y.Z
 # install
 go get github.com/niqdev/gopher-labs
 ```
-
----
-
-TODO
-* aws
-* http client/server json api + test

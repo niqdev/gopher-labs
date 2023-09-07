@@ -8,7 +8,7 @@ import (
 	"github.com/hashicorp/go-retryablehttp"
 )
 
-// TODO http tests
+// TODO http tests + server
 
 func SimpleHttpRequest() {
 	resp, err := http.Get("http://localhost:8080/ip")
