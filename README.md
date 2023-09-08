@@ -36,6 +36,7 @@ docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs create-queu
 
 # list
 docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs list-queues
+docker exec -it go-localstack awslocal sqs list-queues
 
 # produce
 docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs send-message \
