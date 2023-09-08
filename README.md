@@ -27,6 +27,9 @@ make local-up
 
 curl http://localhost:4566/health | jq
 
+# verify hooks
+curl -s localhost:4566/_localstack/init | jq .
+
 # create (see entrypoint folder)
 docker exec -it go-dev aws --endpoint-url=http://localstack:4566 sqs create-queue \
   --queue-name go-sqs-example

@@ -19,8 +19,10 @@ services:
     container_name: go-localstack
     image: localstack/localstack:2.2.0
     ports:
-      - "4566:4566"
-      - "4510-4559:4510-4559"
+      # LocalStack Gateway
+      - "127.0.0.1:4566:4566"
+      # external services port range
+      - "127.0.0.1:4510-4559:4510-4559"
     hostname: localstack
     networks:
       - localstack
@@ -34,9 +36,10 @@ services:
     volumes:
       - ".localstack:/var/lib/localstack"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      # run custom scripts: requires credentials
+      # default credentials
       - "./aws:/root/.aws"
-      - './entrypoint:/docker-entrypoint-initaws.d'
+      # ready hook
+      - './entrypoint:/etc/localstack/init/ready.d/'
 
 networks:
   localstack:
