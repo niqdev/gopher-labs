@@ -162,6 +162,9 @@ sudo snap install --classic go
 
 # macos
 brew install go
+
+# update version
+go mod edit -go 1.21
 ```
 
 Setup
