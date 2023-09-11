@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/argoproj/argo-cd/v2 v2.8.3
-	github.com/argoproj/argo-workflows/v3 v3.4.10
+	github.com/argoproj/argo-workflows/v3 v3.4.11
 	github.com/aws/aws-sdk-go-v2 v1.21.0
 	github.com/aws/aws-sdk-go-v2/config v1.18.39
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.5
