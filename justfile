@@ -8,6 +8,10 @@ GO_FILES := "./..."
 default:
   @just --list
 
+install:
+  go mod tidy
+  go mod vendor
+
 format:
   go fmt {{GO_FILES}}
 
@@ -17,7 +21,7 @@ vet:
 test:
   go test {{GO_FILES}} -v -timeout 30s -cover
 
-build $VERSION_COMMIT="$(git rev-parse HEAD)": format test
+build $VERSION_COMMIT="$(git rev-parse HEAD)": install format test
   rm -frv {{BUILD_PATH}}
   go build \
     -ldflags="-X github.com/niqdev/gopher-labs/internal.Version={{VERSION_COMMIT}}" \
