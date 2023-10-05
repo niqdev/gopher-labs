@@ -24,10 +24,10 @@ require (
 	golang.org/x/crypto v0.13.0
 	golang.org/x/sync v0.3.0
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/api v0.26.9
+	k8s.io/api v0.28.2
 	k8s.io/apimachinery v0.28.2
 	k8s.io/cli-runtime v0.26.9
-	k8s.io/client-go v0.26.9
+	k8s.io/client-go v0.28.2
 	k8s.io/utils v0.0.0-20230406110748-d93618cff8a2
 )
 
