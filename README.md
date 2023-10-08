@@ -98,6 +98,9 @@ go run labs.go mykube --name portforward
 
 # pre-download to solve issue: ErrImagePull (120 seconds timeout)
 minikube image load edgelevel/alpine-xfce-vnc:web-0.6.0
+
+# create job and tail logs
+go run labs.go mykube --name job
 ```
 
 ### mylog

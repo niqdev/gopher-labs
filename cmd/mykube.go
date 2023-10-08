@@ -35,6 +35,8 @@ func invokeMyKubeCmd(cmd string) {
 		mykube.ExecPod()
 	case "portforward":
 		mykube.PortForward()
+	case "job":
+		mykube.TailJob()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)
