@@ -4,14 +4,10 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"path/filepath"
 
 	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
-	"k8s.io/client-go/kubernetes"
-	"k8s.io/client-go/tools/clientcmd"
-	"k8s.io/client-go/util/homedir"
 )
 
 func ListPods() {
@@ -28,23 +24,8 @@ func ListPods() {
 	listPodsForService(context.TODO(), corev1.NamespaceAll)
 }
 
-func getClientSet() *kubernetes.Clientset {
-	kubeconfig := filepath.Join(homedir.HomeDir(), ".kube", "config")
-
-	restConfig, err := clientcmd.BuildConfigFromFlags("", kubeconfig)
-	if err != nil {
-		log.Fatalf("error restConfig: %v", err)
-	}
-
-	clientSet, err := kubernetes.NewForConfig(restConfig)
-	if err != nil {
-		log.Fatalf("error clientSet: %v", err)
-	}
-	return clientSet
-}
-
 func getPods(ctx context.Context, namespace string, podSelector string) []corev1.Pod {
-	clientSet := getClientSet()
+	clientSet := newClientSet()
 
 	pods, err := clientSet.CoreV1().Pods(namespace).List(ctx, metav1.ListOptions{LabelSelector: podSelector})
 	if err != nil {
@@ -55,7 +36,7 @@ func getPods(ctx context.Context, namespace string, podSelector string) []corev1
 }
 
 func listPodsForService(ctx context.Context, namespace string) {
-	clientSet := getClientSet()
+	clientSet := newClientSet()
 
 	services, err := clientSet.CoreV1().Services(namespace).List(ctx, metav1.ListOptions{})
 	if err != nil {

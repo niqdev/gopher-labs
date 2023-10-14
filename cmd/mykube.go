@@ -32,7 +32,7 @@ func invokeMyKubeCmd(cmd string) {
 	case "list":
 		mykube.ListPods()
 	case "exec":
-		mykube.ExecPod()
+		mykube.ExecShellPod()
 	case "portforward":
 		mykube.PortForward()
 	case "job":

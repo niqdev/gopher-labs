@@ -11,38 +11,16 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/kubernetes/scheme"
-	corev1client "k8s.io/client-go/kubernetes/typed/core/v1"
-	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/tools/remotecommand"
 )
 
-// https://miminar.fedorapeople.org/_preview/openshift-enterprise/registry-redeploy/go_client/executing_remote_processes.html
-// https://github.com/kubernetes/kubectl/blob/master/pkg/cmd/exec/exec.go
-func ExecPod() {
+func ExecShellPod() {
+	namespace := corev1.NamespaceDefault
 	ctx := context.TODO()
-
-	kubeconfig := clientcmd.NewNonInteractiveDeferredLoadingClientConfig(
-		clientcmd.NewDefaultClientConfigLoadingRules(),
-		&clientcmd.ConfigOverrides{},
-	)
-
-	namespace, _, err := kubeconfig.Namespace()
-	if err != nil {
-		log.Fatalf("error namespace: %v", err)
-	}
-
-	restConfig, err := kubeconfig.ClientConfig()
-	if err != nil {
-		log.Fatalf("error restConfig: %v", err)
-	}
-
-	coreClient, err := corev1client.NewForConfig(restConfig)
-	if err != nil {
-		log.Fatalf("error coreClient: %v", err)
-	}
+	restConfig, coreClient := newCoreClient()
 
 	// creates a busybox Pod: by running "cat", the Pod will sit and do nothing
-	pod, err := coreClient.Pods(corev1.NamespaceDefault).Create(ctx, &corev1.Pod{
+	pod, err := coreClient.Pods(namespace).Create(ctx, &corev1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: "busybox",
 		},

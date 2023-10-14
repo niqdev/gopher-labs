@@ -17,7 +17,7 @@ import (
 
 func TailJob() {
 	ctx := context.TODO()
-	clientSet := getClientSet()
+	clientSet := newClientSet()
 
 	// apply namespace
 	namespace := namespaceName
