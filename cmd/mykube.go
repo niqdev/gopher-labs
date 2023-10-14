@@ -37,6 +37,10 @@ func invokeMyKubeCmd(cmd string) {
 		mykube.PortForward()
 	case "job":
 		mykube.TailJob()
+	case "copy-to":
+		mykube.CopyToPod()
+	case "copy-from":
+		mykube.CopyFromPod()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

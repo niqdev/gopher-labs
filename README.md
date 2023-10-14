@@ -101,6 +101,10 @@ minikube image load edgelevel/alpine-xfce-vnc:web-0.6.0
 
 # create job and tail logs
 go run labs.go mykube --name job
+
+# copy README.md to/from pod
+go run labs.go mykube --name copy-to
+go run labs.go mykube --name copy-from
 ```
 
 ### mylog

@@ -37,7 +37,7 @@ func PortForward() {
 		log.Fatalf("error clientSet: %v", err)
 	}
 
-	pods := getPods(ctx, "examples", "app.kubernetes.io/name=edgelevel-alpine-xfce-vnc")
+	pods := getPods(ctx, namespaceName, "app.kubernetes.io/name=edgelevel-alpine-xfce-vnc")
 	if len(pods) != 1 {
 		log.Fatalf("pod alpine-xfce-vnc-* not found or invalid")
 	}

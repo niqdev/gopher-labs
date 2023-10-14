@@ -11,6 +11,8 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/kubernetes/scheme"
+	corev1client "k8s.io/client-go/kubernetes/typed/core/v1"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/remotecommand"
 )
 
@@ -67,20 +69,7 @@ func ExecShellPod() {
 	}
 
 	// exec remote shell
-	restRequest := coreClient.RESTClient().
-		Post().
-		Namespace(pod.Namespace).
-		Resource("pods").
-		Name(pod.Name).
-		SubResource("exec").
-		VersionedParams(&corev1.PodExecOptions{
-			Container: pod.Spec.Containers[0].Name,
-			Command:   []string{"/bin/sh"},
-			Stdin:     true,
-			Stdout:    true,
-			Stderr:    true,
-			TTY:       true,
-		}, scheme.ParameterCodec)
+	restRequest := newRestRequest(coreClient, pod, []string{"/bin/sh"}, true)
 
 	exec, err := remotecommand.NewSPDYExecutor(restConfig, "POST", restRequest.URL())
 	if err != nil {
@@ -104,4 +93,21 @@ func ExecShellPod() {
 	if err != nil {
 		log.Fatalf("error exec stream: %v", err)
 	}
+}
+
+func newRestRequest(coreClient *corev1client.CoreV1Client, pod *corev1.Pod, commands []string, isTty bool) *rest.Request {
+	return coreClient.RESTClient().
+		Post().
+		Namespace(pod.Namespace).
+		Resource("pods").
+		Name(pod.Name).
+		SubResource("exec").
+		VersionedParams(&corev1.PodExecOptions{
+			Container: pod.Spec.Containers[0].Name,
+			Command:   commands,
+			Stdin:     true,
+			Stdout:    true,
+			Stderr:    true,
+			TTY:       isTty,
+		}, scheme.ParameterCodec)
 }

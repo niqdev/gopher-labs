@@ -38,7 +38,7 @@ func newCoreClient() (*rest.Config, *corev1client.CoreV1Client) {
 	if err != nil {
 		log.Fatalf("error namespace: %v", err)
 	}
-	log.Println(fmt.Sprintf("curent namespace: %s", namespace))
+	log.Println(fmt.Sprintf("current namespace: %s", namespace))
 
 	restConfig, err := kubeconfig.ClientConfig()
 	if err != nil {

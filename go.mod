@@ -28,6 +28,7 @@ require (
 	k8s.io/apimachinery v0.26.9
 	k8s.io/cli-runtime v0.26.9
 	k8s.io/client-go v0.26.9
+	k8s.io/kubectl v0.26.9
 	k8s.io/utils v0.0.0-20230220204549-a5ecb0141aa5
 )
 
@@ -242,7 +243,6 @@ require (
 	k8s.io/klog/v2 v2.80.1 // indirect
 	k8s.io/kube-aggregator v0.26.9 // indirect
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280 // indirect
-	k8s.io/kubectl v0.26.9 // indirect
 	k8s.io/kubernetes v1.26.9 // indirect
 	layeh.com/gopher-json v0.0.0-20190114024228-97fed8db8427 // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
