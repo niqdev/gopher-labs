@@ -20,7 +20,6 @@ func cpMakeTar(srcPath, destPath string, writer io.Writer) error
 //go:linkname cpStripPathShortcuts k8s.io/kubectl/pkg/cmd/cp.stripPathShortcuts
 func cpStripPathShortcuts(p string) string
 
-// https://github.com/ica10888/client-go-helper/blob/master/pkg/kubectl/cp.go
 func untarAll(reader io.Reader, destDir string, prefix string) error {
 	tarReader := tar.NewReader(reader)
 	for {
