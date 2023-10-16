@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/argoproj/argo-cd/v2 v2.8.4
-	github.com/argoproj/argo-workflows/v3 v3.4.11
+	github.com/argoproj/argo-workflows/v3 v3.5.0
 	github.com/aws/aws-sdk-go-v2 v1.21.2
 	github.com/aws/aws-sdk-go-v2/config v1.18.45
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.7
@@ -41,17 +41,17 @@ require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.3 // indirect
-	github.com/Microsoft/go-winio v0.5.2 // indirect
+	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/PagerDuty/go-pagerduty v1.6.0 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20230518184743-7afd39499903 // indirect
 	github.com/RocketChat/Rocket.Chat.Go.SDK v0.0.0-20210112200207-10ab4d695d60 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
 	github.com/alicebob/miniredis/v2 v2.30.3 // indirect
-	github.com/antonmedv/expr v1.12.5 // indirect
+	github.com/antonmedv/expr v1.15.3 // indirect
 	github.com/argoproj/gitops-engine v0.7.1-0.20230607163028-425d65e07695 // indirect
 	github.com/argoproj/notifications-engine v0.4.1-0.20230620204159-3446d4ae8520 // indirect
-	github.com/argoproj/pkg v0.13.7-0.20230627120311-a4dd357b057e // indirect
+	github.com/argoproj/pkg v0.13.7-0.20230901113346-235a5432ec98 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/aws/aws-sdk-go-v2/credentials v1.13.43 // indirect
 	github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.13.13 // indirect
@@ -124,7 +124,7 @@ require (
 	github.com/google/gofuzz v1.2.0 // indirect
 	github.com/google/pprof v0.0.0-20210720184732-4bb14d4b1be1 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
-	github.com/google/uuid v1.3.0 // indirect
+	github.com/google/uuid v1.3.1 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
@@ -157,7 +157,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.2 // indirect
 	github.com/moby/spdystream v0.2.0 // indirect
-	github.com/moby/term v0.0.0-20220808134915-39b0c02b01ae // indirect
+	github.com/moby/term v0.0.0-20221205130635-1aeaba878587 // indirect
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/monochromegane/go-gitignore v0.0.0-20200626010858-205db1a8cc00 // indirect
@@ -165,7 +165,7 @@ require (
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/oklog/ulid v1.3.1 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
-	github.com/opencontainers/image-spec v1.1.0-rc.3 // indirect
+	github.com/opencontainers/image-spec v1.1.0-rc3 // indirect
 	github.com/opsgenie/opsgenie-go-sdk-v2 v1.0.5 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/pelletier/go-toml/v2 v2.1.0 // indirect
@@ -214,7 +214,8 @@ require (
 	go.starlark.net v0.0.0-20220328144851-d1966c6b9fcd // indirect
 	go.uber.org/multierr v1.10.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
-	golang.org/x/net v0.15.0 // indirect
+	golang.org/x/mod v0.12.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
 	golang.org/x/oauth2 v0.12.0 // indirect
 	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/term v0.13.0 // indirect
@@ -227,7 +228,7 @@ require (
 	google.golang.org/genproto v0.0.0-20230913181813-007df8e322eb // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20230913181813-007df8e322eb // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20230920204549-e6e6cdab5c13 // indirect
-	google.golang.org/grpc v1.58.2 // indirect
+	google.golang.org/grpc v1.58.3 // indirect
 	google.golang.org/protobuf v1.31.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 	gopkg.in/go-playground/webhooks.v5 v5.17.0 // indirect
