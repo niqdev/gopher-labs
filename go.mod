@@ -6,7 +6,7 @@ require (
 	github.com/argoproj/argo-cd/v2 v2.8.4
 	github.com/argoproj/argo-workflows/v3 v3.5.0
 	github.com/aws/aws-sdk-go-v2 v1.21.2
-	github.com/aws/aws-sdk-go-v2/config v1.18.45
+	github.com/aws/aws-sdk-go-v2/config v1.19.0
 	github.com/aws/aws-sdk-go-v2/service/sqs v1.24.7
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
