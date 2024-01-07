@@ -31,7 +31,7 @@ func invokeMyHttpCmd(cmd string) {
 		myhttp.SimpleHttpRequest()
 		myhttp.RetryHttpRequest()
 	case "server":
-		log.Println("TODO not implemented")
+		myhttp.StartServer()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

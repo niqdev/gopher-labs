@@ -73,10 +73,15 @@ go run labs.go mydocker --name [list|run|attach]
 
 ### myhttp
 
-```bash
-docker run -p 8080:80 kennethreitz/httpbin
+* [Top Go Web Frameworks](https://github.com/mingrammer/go-web-framework-stars)
 
-go run labs.go myhttp --name [client|server]
+```bash
+# client
+docker run -p 8080:80 kennethreitz/httpbin
+go run labs.go myhttp --name client
+
+# server
+go run labs.go myhttp --name server
 ```
 
 ### mykube
@@ -159,6 +164,7 @@ go run \
 * [Go by Example](https://gobyexample.com)
 * [Effective Go](https://github.com/golovers/effective-go)
 * [Standard library](https://pkg.go.dev/std)
+* [Awesome Go](https://github.com/avelino/awesome-go)
 
 ## Development
 
