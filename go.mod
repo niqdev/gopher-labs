@@ -14,7 +14,7 @@ require (
 	github.com/docker/go-connections v0.4.0
 	github.com/hashicorp/go-retryablehttp v0.7.5
 	github.com/onsi/ginkgo/v2 v2.13.0
-	github.com/onsi/gomega v1.29.0
+	github.com/onsi/gomega v1.30.0
 	github.com/santhosh-tekuri/jsonschema/v5 v5.3.1
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/viper v1.17.0
