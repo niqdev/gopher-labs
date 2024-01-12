@@ -13,8 +13,14 @@ import (
 func StartServer() {
 	log.Println("listening on port 3333")
 
-	http.Handle("/", http.FileServer(http.Dir("./static")))
-	http.HandleFunc("/hello", getHello)
+	http.HandleFunc("/", getRoot)
+	http.HandleFunc("/status", getStatus)
+
+	fs := http.FileServer(http.Dir("./internal/myhttp/public"))
+	http.Handle("/public/", http.StripPrefix("/public/", fs))
+	http.HandleFunc("/home/", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/public/", http.StatusSeeOther)
+	})
 
 	server := &http.Server{
 		Addr:              ":3333",
@@ -25,7 +31,16 @@ func StartServer() {
 	}
 }
 
-func getHello(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("new hello request\n")
-	io.WriteString(w, "HELLO\n")
+func getRoot(w http.ResponseWriter, r *http.Request) {
+	log.Println(fmt.Sprintf("[%s] new root request", r.Host))
+	if r.URL.Path != "/" {
+		http.Error(w, "Not Found", http.StatusNotFound)
+		return
+	}
+	fmt.Fprintf(w, "ROOT")
+}
+
+func getStatus(w http.ResponseWriter, r *http.Request) {
+	log.Println("new status request")
+	io.WriteString(w, "OK")
 }

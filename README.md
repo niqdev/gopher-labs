@@ -82,6 +82,7 @@ go run labs.go myhttp --name client
 
 # server
 go run labs.go myhttp --name server
+curl -Lv http://localhost:3333/home
 ```
 
 ### mykube
