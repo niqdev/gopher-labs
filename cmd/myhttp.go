@@ -32,6 +32,10 @@ func invokeMyHttpCmd(cmd string) {
 		myhttp.RetryHttpRequest()
 	case "server":
 		myhttp.StartServer()
+	case "ws-server":
+		myhttp.WebsocketServer()
+	case "ws-client":
+		myhttp.WebsocketClient()
 
 	default:
 		log.Fatalf("invalid command: [%v]", cmd)

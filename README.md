@@ -83,6 +83,13 @@ go run labs.go myhttp --name client
 # server
 go run labs.go myhttp --name server
 curl -Lv http://localhost:3333/home
+
+# websocket server + web client
+# http://localhost:3333
+go run labs.go myhttp --name ws-server
+
+# websocket client
+go run labs.go myhttp --name ws-client
 ```
 
 ### mykube
