@@ -65,6 +65,13 @@ go run labs.go myconcurrency
 go run labs.go myconfig
 ```
 
+### mycrypto
+
+```bash
+# pgp message example
+go run labs.go mycrypto --name pgp-message
+```
+
 ### mydocker
 
 ```bash
@@ -206,6 +213,7 @@ go get github.com/aws/aws-sdk-go-v2
 go get github.com/aws/aws-sdk-go-v2/config
 go get github.com/aws/aws-sdk-go-v2/service/sqs
 go get github.com/gorilla/websocket
+go get github.com/ProtonMail/gopenpgp/v2
 go mod vendor
 
 # run

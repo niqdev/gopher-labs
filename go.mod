@@ -3,6 +3,7 @@ module github.com/niqdev/gopher-labs
 go 1.21
 
 require (
+	github.com/ProtonMail/gopenpgp/v2 v2.7.4
 	github.com/argoproj/argo-cd/v2 v2.8.4
 	github.com/argoproj/argo-workflows/v3 v3.5.0
 	github.com/aws/aws-sdk-go-v2 v1.24.1
@@ -45,6 +46,7 @@ require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
 	github.com/PagerDuty/go-pagerduty v1.6.0 // indirect
 	github.com/ProtonMail/go-crypto v0.0.0-20230717121422-5aa5874ade95 // indirect
+	github.com/ProtonMail/go-mime v0.0.0-20230322103455-7d82a3887f2f // indirect
 	github.com/RocketChat/Rocket.Chat.Go.SDK v0.0.0-20210112200207-10ab4d695d60 // indirect
 	github.com/acomagu/bufpipe v1.0.4 // indirect
 	github.com/alicebob/gopher-json v0.0.0-20200520072559-a9ecdc9d1d3a // indirect
