@@ -14,6 +14,14 @@ import (
 
 // see https://github.com/ProtonMail/gopenpgp/blob/main/crypto/sessionkey_test.go
 
+// https://pgp.mit.edu/pks/lookup?search=niqdev&op=index
+// https://pgp.mit.edu/pks/lookup?op=get&search=0x42A644BE82ADB4F9
+
+// https://www.comparitech.com/blog/information-security/diffie-hellman-key-exchange
+// https://www.comparitech.com/blog/information-security/rsa-encryption
+// https://proton.me/blog/what-is-pgp-encryption
+// https://security.stackexchange.com/questions/406/how-should-i-distribute-my-public-key
+
 func PgpMessage() {
 
 	// generate PGP key pairs for each participant (sender and recipient)
