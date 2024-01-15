@@ -10,7 +10,7 @@ import (
 
 // combining PGP (Pretty Good Privacy) for key management with asymmetric encryption
 // and AES (Advanced Encryption Standard) for symmetric message encryption
-// is a common approach to achieve both the efficiency and security
+// is a common approach to achieve both efficiency and security
 
 // see https://github.com/ProtonMail/gopenpgp/blob/main/crypto/sessionkey_test.go
 

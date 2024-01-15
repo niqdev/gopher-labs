@@ -15,6 +15,7 @@ require (
 	github.com/docker/go-connections v0.4.0
 	github.com/gorilla/websocket v1.5.1
 	github.com/hashicorp/go-retryablehttp v0.7.5
+	github.com/mattn/go-sqlite3 v1.14.19
 	github.com/onsi/ginkgo/v2 v2.14.0
 	github.com/onsi/gomega v1.30.0
 	github.com/pkg/errors v0.9.1

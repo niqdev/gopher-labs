@@ -72,6 +72,22 @@ go run labs.go myconfig
 go run labs.go mycrypto --name pgp-message
 ```
 
+### mydb
+
+```bash
+# TODO requires
+CGO_ENABLED=1
+
+# SQLite CRUD examples
+go run labs.go mydb
+
+docker run --rm \
+  --name=sqlitebrowser \
+  -p 3000:3000 \
+  -v $(pwd)/local/db:/config \
+  lscr.io/linuxserver/sqlitebrowser:latest
+```
+
 ### mydocker
 
 ```bash
@@ -214,7 +230,8 @@ go get github.com/aws/aws-sdk-go-v2/config
 go get github.com/aws/aws-sdk-go-v2/service/sqs
 go get github.com/gorilla/websocket
 go get github.com/ProtonMail/gopenpgp/v2
-go mod vendor
+go get github.com/mattn/go-sqlite3
+# OBSOLETE go mod vendor
 
 # run
 go run labs.go
