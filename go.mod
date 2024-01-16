@@ -28,12 +28,12 @@ require (
 	golang.org/x/crypto v0.16.0
 	golang.org/x/sync v0.5.0
 	gopkg.in/yaml.v3 v3.0.1
-	k8s.io/api v0.26.9
-	k8s.io/apimachinery v0.26.9
-	k8s.io/cli-runtime v0.26.9
-	k8s.io/client-go v0.26.9
-	k8s.io/kubectl v0.26.9
-	k8s.io/utils v0.0.0-20230220204549-a5ecb0141aa5
+	k8s.io/api v0.26.12
+	k8s.io/apimachinery v0.26.12
+	k8s.io/cli-runtime v0.26.12
+	k8s.io/client-go v0.26.12
+	k8s.io/kubectl v0.26.12
+	k8s.io/utils v0.0.0-20240102154912-e7106e64919e
 )
 
 require (
@@ -241,14 +241,14 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	k8s.io/apiextensions-apiserver v0.26.9 // indirect
-	k8s.io/apiserver v0.26.9 // indirect
-	k8s.io/component-base v0.26.9 // indirect
-	k8s.io/component-helpers v0.26.9 // indirect
+	k8s.io/apiextensions-apiserver v0.26.12 // indirect
+	k8s.io/apiserver v0.26.12 // indirect
+	k8s.io/component-base v0.26.12 // indirect
+	k8s.io/component-helpers v0.26.12 // indirect
 	k8s.io/klog/v2 v2.80.1 // indirect
-	k8s.io/kube-aggregator v0.26.9 // indirect
+	k8s.io/kube-aggregator v0.26.12 // indirect
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280 // indirect
-	k8s.io/kubernetes v1.26.9 // indirect
+	k8s.io/kubernetes v1.26.12 // indirect
 	layeh.com/gopher-json v0.0.0-20190114024228-97fed8db8427 // indirect
 	nhooyr.io/websocket v1.8.7 // indirect
 	oras.land/oras-go/v2 v2.2.0 // indirect
