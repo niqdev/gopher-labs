@@ -12,7 +12,7 @@ require (
 	github.com/briandowns/spinner v1.23.0
 	github.com/dchest/uniuri v1.2.0
 	github.com/docker/docker v24.0.7+incompatible
-	github.com/docker/go-connections v0.4.0
+	github.com/docker/go-connections v0.5.0
 	github.com/gorilla/websocket v1.5.1
 	github.com/hashicorp/go-retryablehttp v0.7.5
 	github.com/mattn/go-sqlite3 v1.14.19
