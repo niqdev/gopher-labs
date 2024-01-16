@@ -12,6 +12,10 @@ install:
   go mod tidy
   go mod vendor
 
+# updates all the dependencies
+update:
+  go get -u {{GO_FILES}}
+
 format:
   go fmt {{GO_FILES}}
 
